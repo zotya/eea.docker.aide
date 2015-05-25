@@ -12,14 +12,14 @@ var path = require('path');
 var nconf = require('nconf');
 
 var routes = require('./routes');
-//var managementCommands = require('./management/commands');
+var managementCommands = require('./management/commands');
 
 var app = express();
 
 var env = process.env.NODE_ENV || 'dev'
 
 app.set('nconf', nconf);
-//app.set('managementCommands', managementCommands);
+app.set('managementCommands', managementCommands);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
@@ -43,14 +43,6 @@ function checkError(err) {
         process.stderr.write(err.message + '\n\n');
         process.exit(2);
     }
-}
-
-// Schedule sync as expressed in env variables
-// only if running the server
-var syncCrontab = process.env.SYNC_CRONTAB
-if (syncCrontab && process.argv[2] == 'runserver') {
-//    crontab.scheduleJob(syncCrontab, managementCommands.sync);
-    console.log("Enabled sync crontab job: " + syncCrontab);
 }
 
 searchServer.Server(app, __dirname + '/settings.json', function(err, srv) {
