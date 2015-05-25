@@ -1,0 +1,17 @@
+{
+    "http": {
+        "port": 3000
+    },
+    "elastic": {
+        "index": "aqstatsdata",
+        "type": "resources",
+        "field_base":""
+    },
+    "external_templates": {
+        "local_path": "/external_templates",
+        "host": "www.eea.europa.eu",
+        "head_path": "/templates/v2/getRequiredHead?jsdisable=all",
+        "header_path": "/templates/v2/getHeader?jsdisable=all",
+        "footer_path": "/templates/v2/getFooter"
+    }
+}

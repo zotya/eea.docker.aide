@@ -33,11 +33,17 @@ the ```volumes``` entry in ```docker-compose.yml```
 4. ##### Configure Apache/Nginx
  If the application is mapped under a path like: /data-and-maps/aide it needs to be redeirected to /data-and-maps/aide/
 
- * Apache:
-        RewriteCond %{REQUEST_URI} data-and-maps/aide$
-        RewriteRule ^(.*[^/])$ $1/ [L,R=301]
+	```
+	RewriteCond %{REQUEST_URI} data-and-maps/aide$
+	RewriteRule ^(.*[^/])$ $1/ [L,R=301]
+	```
+
  * nginx:
-        on the location is important to have /data-and-maps/aide/
+	```
+	location /data-and-maps/aide/ {
+		proxy_pass http://hostRunningAIDEContainer:3000/
+	}
+	```
 
 ## Docker Usage
 

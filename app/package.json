@@ -1,0 +1,27 @@
+{
+  "name": "aide",
+  "version": "0.0.1",
+  "description": "Air Immissions Data Explorer",
+  "dependencies" : {
+    "nconf": "*",
+    "express": "*",
+    "jade": "*",
+    "eea-searchserver": "*",
+    "morgan": "*",
+    "request": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/eea/eea.docker.aide.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "EEA",
+    "Elastic",
+    "AIDE"
+  ],
+  "author": "Zoltan Szabo",
+  "license": "GPL-2.0",
+  "readmeFilename": "README.md"
+}
