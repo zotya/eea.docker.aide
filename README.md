@@ -1,4 +1,10 @@
-# AIDE Node.js application + Docker env
+# AIDE
+
+> "Aide was the Basque numenistic deity of the air. She could manifest herself in both good (gentle breeze) and evil (storm wind) forms." wikipedia.org
+
+This application is a frontend for [EEA Searchservices](https://github.com/eea/eea.docker.searchservices). It provides a *slice and dice* facetted search for Air emissions statistics reported to the European Environment Agency on behalf of the European Commission.
+
+Node.js application + Docker env
 
 ## Development
 1. Change code
