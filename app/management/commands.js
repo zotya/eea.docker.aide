@@ -65,7 +65,7 @@ function buildQueries(results) {
         if (step > 0){
             slist = slist + ", ";
         }
-        slist = slist + '"' + results.results.bindings[i].s.value +'"'
+        slist = slist + '<' + results.results.bindings[i].s.value +'>'
         step++;
         if ((step === config.filterLength) || (i === results.results.bindings.length - 1)){
             var filter = config.filterTemplate.split("<slist>").join(slist);
@@ -79,6 +79,9 @@ function buildQueries(results) {
 
 function reindex() {
     var elastic = require('nconf').get('elastic');
+
+    var SparqlClient = require('sparql-client');
+    var client = new SparqlClient(config.endpoint);
 
     client.query(config.sQuery)
         .execute(function(error, results){

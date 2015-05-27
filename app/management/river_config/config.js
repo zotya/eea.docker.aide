@@ -298,7 +298,7 @@ WHERE\
         <filter>\
 }";
 
-var filterTemplate = "FILTER (str(?s) in (<slist>))"
+var filterTemplate = "FILTER (?s in (<slist>))"
 
 var filterLength = 100;
 
