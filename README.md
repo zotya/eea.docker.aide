@@ -37,7 +37,7 @@ the ```volumes``` entry in ```docker-compose.yml```
    can ping the Elastic backend
 3. Pass commands and env variables to the image as explained in the Docker Usage section
 4. ##### Configure Apache/Nginx
- If the application is mapped under a path like: /data-and-maps/aide it needs to be redeirected to /data-and-maps/aide/
+ If the application is mapped under a path like: /data-and-maps/aide it needs to be redirected to /data-and-maps/aide/
 
 	```
 	RewriteCond %{REQUEST_URI} data-and-maps/aide$
