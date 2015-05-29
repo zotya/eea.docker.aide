@@ -708,13 +708,18 @@ function sortNumber(a,b){
             $('.facetview_facetrange_remove', obj).bind('click',clearfacetrange);
             var values = [];
             var valsobj = $( '[id="facetview_' + eea_rel +'"]', obj );
-            valsobj.find('.facetview_filterchoice', obj).each(function() {
-                var eea_val = parseFloat($(this).attr('href'));
-                if (!isNaN(eea_val)){
-                    values.push(eea_val);
-                }
-            });
-            values = values.sort(sortNumber);
+            if (valsobj.hasClass("hasData")) {
+                values = valsobj.data('values');
+            }
+            else{
+                valsobj.find('.facetview_filterchoice', obj).each(function() {
+                    var eea_val = parseFloat($(this).attr('href'));
+                    if (!isNaN(eea_val)){
+                        values.push(eea_val);
+                    }
+                });
+                values = values.sort(sortNumber);
+            }
             $( "#facetview_slider_" + rel, obj ).slider({
                 range: true,
                 min: 0,
@@ -1019,11 +1024,33 @@ function sortNumber(a,b){
                     }
                 }
                 records = tmp_records;
-                for ( var item in records ) {
+                if (jQuery.inArray(facet, options.rangefacets) == -1){
+                    for ( var item in records ) {
+                        var append = '<tr class="facetview_filtervalue" style="display:none;"><td><a class="facetview_filterchoice' +
+                            '" rel="' + facet + '" href="' + item + '">' + item +
+                            ' (' + records[item] + ')</a></td></tr>';
+                        facet_filter.append(append);
+                    }
+                }
+                else{
+                    var rangevalues = []
+                    for ( var item in records ) {
+                        rangevalues.push(parseFloat(item));
+                    }
+                    rangevalues = rangevalues.sort(sortNumber);
+
                     var append = '<tr class="facetview_filtervalue" style="display:none;"><td><a class="facetview_filterchoice' +
-                        '" rel="' + facet + '" href="' + item + '">' + item +
-                        ' (' + records[item] + ')</a></td></tr>';
+                        '" rel="' + facet + '" href="' + rangevalues[0].toString() + '">' + rangevalues[0].toString() +
+                        ' (' + records[rangevalues[0].toString()] + ')</a></td></tr>';
                     facet_filter.append(append);
+
+                    append = '<tr class="facetview_filtervalue" style="display:none;"><td><a class="facetview_filterchoice' +
+                        '" rel="' + facet + '" href="' + rangevalues[rangevalues.length-1].toString() + '">' + rangevalues[rangevalues.length-1].toString() +
+                        ' (' + records[rangevalues[rangevalues.length-1].toString()] + ')</a></td></tr>';
+                    facet_filter.append(append);
+                    facet_filter.data("values", rangevalues)
+                    facet_filter.addClass("hasData");
+debugger;
                 }
                 if ( $('.facetview_filtershow[rel="' + facetclean + '"]', obj).hasClass('facetview_open') ) {
                     facet_filter.children().find('.facetview_filtervalue').show();
@@ -1519,6 +1546,7 @@ function sortNumber(a,b){
         thefacetview += '<div style="clear:both;" class="btn-toolbar" id="facetview_selectedfilters"></div>';
         options.pager_on_top ? thefacetview += '<div class="facetview_metadata" style="margin-top:20px;"></div>' : "";
         thefacetview += options.searchwrap_start + options.searchwrap_end;
+        thefacetview += '<div class="notify_loading"></div>';
         thefacetview += '<div class="facetview_metadata"></div></div></div></div>';
 
         var obj = undefined;

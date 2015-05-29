@@ -73,6 +73,7 @@ jQuery(document).ready(function($) {
         post_search_callback: viewReady,
         pushstate : false,
         default_sort: default_sort,
+        rangefacets: [field_base + 'airqualityValue_aqvalue', field_base + 'datacapturePct_datacapture'],
         facets: [
 //            {'field':'_id', 'display': '_id', 'order': 'term'},
             {'field':field_base + 'inspireNamespace', 'display': 'Namespace', 'size':'50', 'order': 'term'},
@@ -86,7 +87,7 @@ jQuery(document).ready(function($) {
             {'field':field_base + 'procedure_analyticaltechnique', 'display': 'AnalyticalTechnique', 'size':'50', 'order': 'term'},
             {'field':field_base + 'samplingPoint_zone', 'display': 'Zone', 'size':'50', 'order': 'term'},
             {'field':field_base + 'samplingPoint_zoneCountryLabel', 'display': 'ZoneCountryLabel', 'size':'50', 'order': 'term'},
-            {'field':field_base + 'station_geo_pos', 'display': 'Geo location', 'size':'10000000', 'order': 'term'}
+            {'field':field_base + 'station_geo_pos', 'display': 'Geo location', 'size':'2', 'order': 'term'}
         ],
 
 
