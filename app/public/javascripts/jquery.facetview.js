@@ -1050,7 +1050,6 @@ function sortNumber(a,b){
                     facet_filter.append(append);
                     facet_filter.data("values", rangevalues)
                     facet_filter.addClass("hasData");
-debugger;
                 }
                 if ( $('.facetview_filtershow[rel="' + facetclean + '"]', obj).hasClass('facetview_open') ) {
                     facet_filter.children().find('.facetview_filtervalue').show();

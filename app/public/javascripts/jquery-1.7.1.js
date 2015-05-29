@@ -7930,7 +7930,6 @@ jQuery.ajaxPrefilter( "script", function( s ) {
 		s.cache = false;
 	}
 	if ( s.crossDomain ) {
-debugger;
 		s.type = "POST";
 		s.global = false;
 	}
