@@ -1156,9 +1156,6 @@ function sortNumber(a,b){
             return rqs;
         };
 
-        var elasticsearchfilter = function(){
-
-        }
         // build the search query URL based on current params
         var elasticsearchquery = function() {
             var qs = {};
@@ -1303,6 +1300,9 @@ function sortNumber(a,b){
             for ( var item = 0; item < options.facets.length; item++ ) {
                 var fobj = jQuery.extend(true, {}, options.facets[item] );
                 delete fobj['display'];
+                delete fobj['min_size'];
+                delete fobj['operator'];
+                delete fobj['facet_display_options'];
                 qs['facets'][fobj['field']] = {"terms":fobj};
                 for (var ni; ni < options.nested.length; ni++ ) {
                     if (fobj['field'].indexOf(options.nested[i]) == 0) {
@@ -1409,7 +1409,8 @@ function sortNumber(a,b){
         // parse any source params out for an initial search
         var parsesource = function() {
             var qrystr = options.source.query;
-            if ( 'bool' in qrystr ) {
+            if  (( 'filtered' in qrystr ) && ( 'query' in qrystr.filtered ) && ( 'bool' in qrystr.filtered.query )) {
+                qrystr = qrystr.filtered.query;
                 var qrys = [];
                 // TODO: check for nested
                 if ( 'must' in qrystr.bool ) {
