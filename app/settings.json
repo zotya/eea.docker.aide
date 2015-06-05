@@ -3,7 +3,7 @@
         "port": 3000
     },
     "elastic": {
-        "index": "aqstatsdata",
+        "index": "aidedata",
         "type": "resources",
         "field_base":""
     },
