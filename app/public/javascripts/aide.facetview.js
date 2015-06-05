@@ -94,7 +94,7 @@ jQuery(document).ready(function($) {
         result_display: [
             [
                 {
-                    'pre':'<a class="detail_link" href="' + base_path + 'details?aideid=',
+                    'pre':'<a class="detail_link" href="./details?aideid=',
                     'field': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#about',
                     'post': '">Details</a></td>'
                 },

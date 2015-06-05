@@ -10,6 +10,7 @@ var field_base = nconf.get("elastic:field_base");
 var path = require('path');
 
 var fs = require('fs');
+var searchServer = require('eea-searchserver')
 
 var fieldsMapping = [
     {'name' : '_id', 'field' : '_id', 'title' : '_id'},
@@ -58,11 +59,13 @@ var fieldsMapping = [
 exports.index = function(req, res){
   var templatePath = nconf.get('external_templates:local_path');
 
-  res.render('index', {title: 'aide',
-                        'headFile': path.join(templatePath, 'head.html'),
-                        'headerFile': path.join(templatePath, 'header.html'),
-                        'footerFile': path.join(templatePath, 'footer.html'),
-                        'templateRender': fs.readFileSync});
+  var options = {title: 'aide',
+                'headFile': path.join(templatePath, 'head.html'),
+                'headerFile': path.join(templatePath, 'header.html'),
+                'footerFile': path.join(templatePath, 'footer.html'),
+                'templateRender': fs.readFileSync};
+
+  searchServer.EEAFacetFramework.render(res, path.join(__dirname, '..', 'views', 'index.jade'), options);
 };
 
 exports.details = function(req, res){
@@ -107,20 +110,24 @@ exports.details = function(req, res){
             }
             resultobj['exceedence_link'] = {'label':'exceedence_link', value:encodeURIComponent(resultobj['_id'].value)};
             resultobj['_shorttitle'].value = resultobj['_id'].value.split('/')[resultobj['_id'].value.split('/').length - 1];
-            res.render('details', {data: resultobj,
-                                    field_base: field_base,
-                                    'headFile': path.join(templatePath, 'head.html'),
-                                    'headerFile': path.join(templatePath, 'header.html'),
-                                    'footerFile': path.join(templatePath, 'footer.html'),
-                                    'templateRender': fs.readFileSync});
+            var options = {data: resultobj,
+                        field_base: field_base,
+                        'headFile': path.join(templatePath, 'head.html'),
+                        'headerFile': path.join(templatePath, 'header.html'),
+                        'footerFile': path.join(templatePath, 'footer.html'),
+                        'templateRender': fs.readFileSync};
+            searchServer.EEAFacetFramework.render(res, path.join(__dirname, '..', 'views', 'details.jade'), options);
+
         }
         catch(err){
-            res.render('details', {data: "",
-                                    field_base: field_base,
-                                    'headFile': path.join(templatePath, 'head.html'),
-                                    'headerFile': path.join(templatePath, 'header.html'),
-                                    'footerFile': path.join(templatePath, 'footer.html'),
-                                    'templateRender': fs.readFileSync});
+            var options = {data: "",
+                        field_base: field_base,
+                        aideid: req.query.aideid,
+                        'headFile': path.join(templatePath, 'head.html'),
+                        'headerFile': path.join(templatePath, 'header.html'),
+                        'footerFile': path.join(templatePath, 'footer.html'),
+                        'templateRender': fs.readFileSync};
+            searchServer.EEAFacetFramework.render(res, path.join(__dirname, '..', 'views', 'details.jade'), options);
         }
 
     }

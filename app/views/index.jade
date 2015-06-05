@@ -1,7 +1,8 @@
-extends layout
-
 block title
     title AIDE  &mdash; Air emIssions Data Explorer &mdash; European Environment Agency
+
+block extrajavascripts
+    script(type='text/javascript', src='javascripts/aide.facetview.js')
 
 block content
     div(id="portal-breadcrumbs")
