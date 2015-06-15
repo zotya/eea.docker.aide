@@ -14,7 +14,7 @@ var nconf = require('nconf');
 var routes = require('./routes');
 var managementCommands = require('./management/commands');
 
-var app = express();
+var app = searchServer.EEAFacetFramework.framework();
 
 var env = process.env.NODE_ENV || 'dev'
 
