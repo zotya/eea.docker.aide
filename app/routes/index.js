@@ -9,7 +9,6 @@ nconf.file({file:'/code/settings.json'});
 var field_base = nconf.get("elastic:field_base");
 var path = require('path');
 
-var fs = require('fs');
 var searchServer = require('eea-searchserver')
 
 var fieldsMapping = [
@@ -57,19 +56,12 @@ var fieldsMapping = [
 ];
 
 exports.index = function(req, res){
-  var templatePath = nconf.get('external_templates:local_path');
+  var options = {title: 'aide'};
 
-  var options = {title: 'aide',
-                'headFile': path.join(templatePath, 'head.html'),
-                'headerFile': path.join(templatePath, 'header.html'),
-                'footerFile': path.join(templatePath, 'footer.html'),
-                'templateRender': fs.readFileSync};
-
-  searchServer.EEAFacetFramework.render(res, path.join(__dirname, '..', 'views', 'index.jade'), options);
+  searchServer.EEAFacetFramework.render(req, res, path.join(__dirname, '..', 'views', 'index.jade'), options);
 };
 
 exports.details = function(req, res){
-  var templatePath = nconf.get('external_templates:local_path');
 
   if (req.query.aideid === undefined){
       res.send('aideid is missing');
@@ -111,23 +103,15 @@ exports.details = function(req, res){
             resultobj['exceedence_link'] = {'label':'exceedence_link', value:encodeURIComponent(resultobj['_id'].value)};
             resultobj['_shorttitle'].value = resultobj['_id'].value.split('/')[resultobj['_id'].value.split('/').length - 1];
             var options = {data: resultobj,
-                        field_base: field_base,
-                        'headFile': path.join(templatePath, 'head.html'),
-                        'headerFile': path.join(templatePath, 'header.html'),
-                        'footerFile': path.join(templatePath, 'footer.html'),
-                        'templateRender': fs.readFileSync};
-            searchServer.EEAFacetFramework.render(res, path.join(__dirname, '..', 'views', 'details.jade'), options);
+                        field_base: field_base};
+            searchServer.EEAFacetFramework.render(req, res, path.join(__dirname, '..', 'views', 'details.jade'), options);
 
         }
         catch(err){
             var options = {data: "",
                         field_base: field_base,
-                        aideid: req.query.aideid,
-                        'headFile': path.join(templatePath, 'head.html'),
-                        'headerFile': path.join(templatePath, 'header.html'),
-                        'footerFile': path.join(templatePath, 'footer.html'),
-                        'templateRender': fs.readFileSync};
-            searchServer.EEAFacetFramework.render(res, path.join(__dirname, '..', 'views', 'details.jade'), options);
+                        aideid: req.query.aideid};
+            searchServer.EEAFacetFramework.render(req, res, path.join(__dirname, '..', 'views', 'details.jade'), options);
         }
 
     }
