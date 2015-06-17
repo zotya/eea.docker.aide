@@ -13,7 +13,7 @@ var nconf = require('nconf');
 var routes = require('./routes');
 var managementCommands = require('./management/commands');
 
-var app = searchServer.EEAFacetFramework.framework();
+var app = searchServer.EEAFacetFramework.framework(app_home = __dirname);
 
 var env = process.env.NODE_ENV || 'dev'
 

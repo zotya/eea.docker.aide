@@ -58,7 +58,7 @@ var fieldsMapping = [
 exports.index = function(req, res){
   var options = {title: 'aide'};
 
-  searchServer.EEAFacetFramework.render(req, res, path.join(__dirname, '..', 'views', 'index.jade'), options);
+  searchServer.EEAFacetFramework.render(req, res, 'index', options);
 };
 
 exports.details = function(req, res){
@@ -104,14 +104,14 @@ exports.details = function(req, res){
             resultobj['_shorttitle'].value = resultobj['_id'].value.split('/')[resultobj['_id'].value.split('/').length - 1];
             var options = {data: resultobj,
                         field_base: field_base};
-            searchServer.EEAFacetFramework.render(req, res, path.join(__dirname, '..', 'views', 'details.jade'), options);
+            searchServer.EEAFacetFramework.render(req, res, 'details', options);
 
         }
         catch(err){
             var options = {data: "",
                         field_base: field_base,
                         aideid: req.query.aideid};
-            searchServer.EEAFacetFramework.render(req, res, path.join(__dirname, '..', 'views', 'details.jade'), options);
+            searchServer.EEAFacetFramework.render(req, res, 'details', options);
         }
 
     }
