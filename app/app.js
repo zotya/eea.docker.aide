@@ -7,14 +7,13 @@
 var searchServer = require('eea-searchserver')
 var express = require('express');
 var morgan = require('morgan');
-var http = require('http');
 var path = require('path');
 var nconf = require('nconf');
 
 var routes = require('./routes');
 var managementCommands = require('./management/commands');
 
-var app = searchServer.EEAFacetFramework.framework();
+var app = searchServer.EEAFacetFramework.framework(app_home = __dirname);
 
 var env = process.env.NODE_ENV || 'dev'
 
@@ -32,11 +31,9 @@ app.use(logger);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', searchServer.middleware.templateRequired, routes.index);
-app.get('/index', searchServer.middleware.templateRequired, routes.index);
-app.get('/details', searchServer.middleware.templateRequired, routes.details);
-app.get('/api', searchServer.routes.elasticProxy);
-app.get('/invalidate_templates', searchServer.routes.invalidateTemplates);
+app.get('/', routes.index);
+app.get('/index', routes.index);
+app.get('/details', routes.details);
 
 function checkError(err) {
     if (err) {
@@ -57,3 +54,7 @@ searchServer.Server(app, __dirname + '/settings.json', function(err, srv) {
         console.log("Ran command: " + process.argv[2]);
     });
 });
+
+exports.fieldsMapping = function(next){
+    next(require(path.join(__dirname, "mapping.json")));
+}
