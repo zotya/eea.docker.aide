@@ -1,7 +1,15 @@
 block extrajavascripts
+    script(type='text/javascript').
+        $(document).ready(function($){
+            $("div.container > div.content").attr("id", "content")
+        });
+
     script(type='text/javascript', src='http://www.eea.europa.eu/register_function.js')
     script(type='text/javascript', src='http://www.eea.europa.eu/nodeutilities.js')
     script(type='text/javascript', src='http://www.eea.europa.eu/mark_special_links.js')
+
+block extrastyles
+    link(rel="stylesheet", href="css/aide.facetview.css")
 
 mixin tr_th_td(item, link_item)
     if(item && item.value)
@@ -76,7 +84,6 @@ block content
             b= aideid 
             span= " does not exist"
 
-block datasources
     div(class="visualization-info")
         h3 Data sources
         a(href="http://www.eea.europa.eu/data-and-maps/data/aqereporting") AQ e-Reporting
