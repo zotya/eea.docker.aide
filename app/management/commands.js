@@ -59,6 +59,8 @@ function removeData() {
 }
 
 function buildQueries(results) {
+    syncReq.eeaRDF.query.push(config.queryTemplate);
+    return;
     var slist = "";
     var step = 0;
     for (var i = 0; i < results.results.bindings.length; i++){
@@ -114,7 +116,7 @@ function createIndex() {
         });
 }
 
-var fetchLimit = 100;
+var fetchLimit = 1000;
 function fetchQuery(idx, offset) {
     var elastic = require('nconf').get('elastic');
     var SparqlClient = require('sparql-client');
@@ -124,6 +126,7 @@ function fetchQuery(idx, offset) {
 console.log(offset);
     var tmp_query = syncReq.eeaRDF.query[idx] + " LIMIT " + fetchLimit + " OFFSET " + offset;
 //    console.log(tmp_query);
+    console.log(tmp_query);
     client.query(tmp_query).execute(function(error, results){
         for (var i = 0; i < results.results.bindings.length; i++){
             var toindex = {};
@@ -136,12 +139,12 @@ console.log(offset);
                 .POST(elastic.index+"/"+elastic.type+"/", toindex, callback("indexed 1 row"))
                 .execute();
         }
-        if (results.head.vars.length < fetchLimit){
+/*        if (results.head.vars.length < fetchLimit){
             setTimeout(function(){fetchQuery(idx + 1, 0)}, 0);
         }
         else {
             setTimeout(function(){fetchQuery(idx, offset + 1)}, 0);
-        }
+        }*/
     });
 }
 

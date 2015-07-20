@@ -300,12 +300,13 @@ WHERE\
 
 var filterTemplate_ = "FILTER (?s in (<slist>))"
 
-var filterLength = 100;
+var filterLength = 1000;
 
 var sQuery_ = "SELECT ?s WHERE { ?s a <http://reference.eionet.europa.eu/aq/ontology/ValidatedExceedence>} order by ?s"
 
 
 var queryTemplate = 
+
 "PREFIX rod: <http://rod.eionet.europa.eu/schema.rdf#> \
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#> \
 PREFIX dcterms: <http://purl.org/dc/terms/> \
@@ -315,29 +316,44 @@ PREFIX aq: <http://rdfdata.eionet.europa.eu/airquality/ontology/> \
 PREFIX aqr: <http://reference.eionet.europa.eu/aq/ontology/>\
 PREFIX aqdd: <http://dd.eionet.europa.eu/property/>\
 SELECT DISTINCT \
-?Country ?Namespace \
+?areURI \
+?Country \
+(?locURI as ?country_link) \
+?Namespace \
 (YEAR(?beginPosition) as ?ReportingYear) \
 ?NetworkId ?NetworkName \
 ?StationId ?EUStationCode ?StationName \
+?staURI \
+?statsURI \
 ?SamplingPointId \
+?SamplingPointURI \
 (bif:either(?AQD > 0,'YES','NO') as ?UsedForAQD) \
 ?AggregationType \
+?AggregationTypeURI \
 ?ReportingMetric \
+?ReportingMetricURI \
 ?Pollutant \
+?PollutantURI \
 (ROUND(?AQvalue * 100)/100.0 AS ?AQvalue) \
 ?ExceedanceThreshold \
 (REPLACE(str(?Unit),'http://dd.eionet.europa.eu/vocabulary/uom/concentration/','') as ?Unit) \
 (ROUND(?DataCapture * 100)/100.0 AS ?DataCapture) \
 ?VerificationFlag \
 ?StationType \
+?typeURI \
 ?StationArea \
-ROUND(?StationLat * 10000)/10000.0 AS ?StationLatitude  \
+?areaURI \
+ROUND(?StationLat * 10000)/10000.0 AS ?StationLatitude \
 ROUND(?StationLong * 10000)/10000.0 AS ?StationLongitude \
+concat(str(?StationLat),',',str(?StationLong)) as ?geo_pos \
 ?Zone \
+?ZoneURI \
 ?ZoneLabel \
 ?ZoneType \
+?zonetypeURI \
 ?ZoneAdjustmentUsed \
-(bif:either(?Exceedance > 0,'YES','NO') as ?ZoneDeclaredExceedance)  \
+?corrURI \
+(bif:either(?Exceedance > 0,'YES','NO') as ?ZoneDeclaredExceedance) \
  \
 WHERE { \
  \
@@ -434,7 +450,9 @@ OPTIONAL{?envURI aqr:protectionTarget ?ProtectionTargetURI} . \
 OPTIONAL{?AggregationTypeURI aqdd:broaderMetric ?ReportingMetricURI} . \
  \
  \
-<filter> . \
+FILTER regex(?Namespace,'ES.BDCA.AQD') . \
+FILTER regex(?PollutantURI, 'http://dd.eionet.europa.eu/vocabulary/aq/pollutant/7$') .\
+FILTER (YEAR(?beginPosition) = 2013) . \
  \
 }} \
  \
