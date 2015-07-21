@@ -1,32 +1,32 @@
 function addHeaders(){
     $("#facetview_results").append("<thead>" +
                                         "<tr>" +
-                                            "<th>Details</th>"+
+                                            "<th>Country</th>"+
                                             "<th>Namespace</th>"+
-                                            "<th>Station</th>"+
-                                            "<th>AggregationType</th>"+
-                                            "<th>ReportingMetric</th>"+
-                                            "<th>Year</th>"+
+                                            "<th>Reporting Year</th>"+
+                                            "<th>Network Name</th>"+
+                                            "<th>Station Id</th>"+
+                                            "<th>EU Station Code</th>"+
+                                            "<th>Station Name</th>"+
+                                            "<th>Sampling Poin Id</th>"+
+                                            "<th>Used For AQD</th>"+
+                                            "<th>Aggregation Type</th>"+
+                                            "<th>Reporting Metric</th>"+
                                             "<th>Pollutant</th>"+
-                                            "<th>AQvalue</th>"+
-                                            "<th>DataCapture</th>"+
-                                            "<th>ValidityFlag</th>"+
-                                            "<th>VerificationFlag</th>"+
-                                            "<th>StationType</th>"+
-                                            "<th>StationArea</th>"+
-                                            "<th>StationLatitude</th>"+
-                                            "<th>StationLongitude</th>"+
-                                            "<th>AnalyticalTechnique</th>"+
-                                            "<th>MeasurementType</th>"+
-                                            "<th>InletHeight</th>"+
-                                            "<th>KerbDistance</th>"+
+                                            "<th>AQ Value</th>"+
+                                            "<th>Exceedance Threshold</th>"+
+                                            "<th>Unit</th>"+
+                                            "<th>Data Capture</th>"+
+                                            "<th>Verification Flag</th>"+
+                                            "<th>Station Type</th>"+
+                                            "<th>Station Area</th>"+
+                                            "<th>Station Latitude</th>"+
+                                            "<th>Station Longitude</th>"+
                                             "<th>Zone</th>"+
-                                            "<th>ZoneLabel</th>"+
-                                            "<th>ZoneType</th>"+
-                                            "<th>ZoneCountryLabel</th>"+
-                                            "<th>SamplingPoint</th>"+
-                                            "<th>Sample</th>"+
-                                            "<th>Procedure</th>"+
+                                            "<th>Zone Label</th>"+
+                                            "<th>Zone Type</th>"+
+                                            "<th>Zone Adjustment Used</th>"+
+                                            "<th>Zone Declared Exceedance</th>"+
                                         "</tr>"+
                                     "</thead>");
 }
@@ -61,8 +61,8 @@ function viewReady(){
 
 jQuery(document).ready(function($) {
     var default_sort = [{}, {}];
-    default_sort[0][field_base + 'inspireNamespace'] = {"order": 'asc'};
-    default_sort[1][field_base + 'beginPosition_year'] = {"order": 'asc'};
+    default_sort[0][field_base + 'Namespace'] = {"order": 'asc'};
+    default_sort[1][field_base + 'ReportingYear'] = {"order": 'asc'};
     $('.facet-view-simple').facetview({
         search_url: './api',
         search_index: 'elasticsearch',
@@ -71,8 +71,8 @@ jQuery(document).ready(function($) {
         enable_rangeselect: true,
         enable_geoselect: true,
         default_sort: default_sort,
-        rangefacets: [field_base + 'airqualityValue_aqvalue', field_base + 'datacapturePct_datacapture'],
-        geofacets: [field_base + 'station_geo_pos'],
+        rangefacets: [field_base + 'AQvalue', field_base + 'DataCapture'],
+        geofacets: [field_base + 'geo_pos'],
         post_init_callback: function() {
           add_EEA_settings();
         },
@@ -83,155 +83,194 @@ jQuery(document).ready(function($) {
 
         facets: [
 //            {'field':'_id', 'display': '_id', 'order': 'term'},
-            {'field':field_base + 'inspireNamespace', 'display': 'Namespace', 'size':'50', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
-            {'field':field_base + 'beginPosition_year', 'display': 'Year', 'size':'50', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']}, //?
-            {'field':field_base + 'pollutant', 'display': 'Pollutant', 'size':'50', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
-            {'field':field_base + 'aggregationType', 'display': 'AggregationType', 'size':'50', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
-            {'field':field_base + 'airqualityValue_aqvalue', 'display': 'AQvalue', 'size':'10000000', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
-            {'field':field_base + 'datacapturePct_datacapture', 'display': 'DataCapture', 'size':'10000000', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
-            {'field':field_base + 'samplingPoint_stationtype', 'display': 'StationType', 'size':'50', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
-            {'field':field_base + 'station_stationarea', 'display': 'StationArea', 'size':'50', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
-            {'field':field_base + 'procedure_analyticaltechnique', 'display': 'AnalyticalTechnique', 'size':'50', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
-            {'field':field_base + 'samplingPoint_zone', 'display': 'Zone', 'size':'50', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
-            {'field':field_base + 'samplingPoint_zoneCountryLabel', 'display': 'ZoneCountryLabel', 'size':'50', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
-            {'field':field_base + 'station_geo_pos', 'display': 'Geo location', 'size':'2', 'order': 'term', 'facet_display_options': ['sort', 'checkbox'], 'operator':'OR'}
+            {'field':field_base + 'Country', 'display': 'Country', 'size':'40', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
+            {'field':field_base + 'ReportingYear', 'display': 'Reporting Year', 'size':'5', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']}, //?
+            {'field':field_base + 'Pollutant', 'display': 'Pollutant', 'size':'14', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
+            {'field':field_base + 'AggregationType', 'display': 'Aggregation Type', 'size':'10', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
+            {'field':field_base + 'AQvalue', 'display': 'AQ Value', 'size':'10000000', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
+            {'field':field_base + 'DataCapture', 'display': 'Data Capture', 'size':'10000000', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
+            {'field':field_base + 'StationType', 'display': 'Station Type', 'size':'4', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
+            {'field':field_base + 'StationArea', 'display': 'Station Area', 'size':'50', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
+            {'field':field_base + 'UsedForAQD', 'display': 'Used For AQD', 'size':'2', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
+            {'field':field_base + 'Zone', 'display': 'Zone', 'size':'10', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
+            {'field':field_base + 'ZoneType', 'display': 'Zone Type', 'size':'3', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
+            {'field':field_base + 'ZoneDeclaredExceedance', 'display': 'Zone Declared Exceedance', 'size':'2', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
+            {'field':field_base + 'ZoneAdjustmentUsed', 'display': 'Zone Adjustment Used', 'size':'2', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
+            {'field':field_base + 'geo_pos', 'display': 'Geo location', 'size':'2', 'order': 'term', 'facet_display_options': ['sort', 'checkbox'], 'operator':'OR'}
         ],
 
+/*?areURI \
+?Country \
+(?locURI as ?country_link) \
+?Namespace \
+(YEAR(?beginPosition) as ?ReportingYear) \
+?NetworkId ?NetworkName \
+?StationId ?EUStationCode ?StationName \
+?staURI \
+?statsURI \
+?SamplingPointId \
+?SamplingPointURI \
+(bif:either(?AQD > 0,'YES','NO') as ?UsedForAQD) \
+?AggregationType \
+?AggregationTypeURI \
+?ReportingMetric \
+?ReportingMetricURI \
+?Pollutant \
+?PollutantURI \
+(ROUND(?AQvalue * 100)/100.0 AS ?AQvalue) \
+?ExceedanceThreshold \
+(REPLACE(str(?Unit),'http://dd.eionet.europa.eu/vocabulary/uom/concentration/','') as ?Unit) \
+(ROUND(?DataCapture * 100)/100.0 AS ?DataCapture) \
+?VerificationFlag \
+?StationType \
+?typeURI \
+?StationArea \
+?areaURI \
+ROUND(?StationLat * 10000)/10000.0 AS ?StationLatitude \
+ROUND(?StationLong * 10000)/10000.0 AS ?StationLongitude \
+concat(str(?StationLat),',',str(?StationLong)) as ?geo_pos \
+?Zone \
+?ZoneURI \
+?ZoneLabel \
+?ZoneType \
+?zonetypeURI \
+?ZoneAdjustmentUsed \
+?corrURI \
+(bif:either(?Exceedance > 0,'YES','NO') as ?ZoneDeclaredExceedance) \*/
 
         result_display: [
-            [
-                {
-                    'pre':'<a class="detail_link" href="./details?aideid=',
-                    'field': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#about',
-                    'post': '">Details</a></td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "inspireNamespace",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "station",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "aggregationType",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "aggregationType_reportingmetric",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "beginPosition_year",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "pollutant",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "airqualityValue_aqvalue",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "datacapturePct_datacapture",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "observationValidity",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "observationVerification",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "samplingPoint_stationtype",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "station_stationarea",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "station_lat_stationlatitude",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "station_lon_stationlongitude",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "procedure_analyticaltechnique",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "procedure_measurementtype",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "sample_inletHeight",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "sample_kerbdistance",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "samplingPoint_zone",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "samplingPoint_zoneLabel",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "samplingPoint_zoneType",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "samplingPoint_zoneCountryLabel",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "samplingPoint_samplingPoint",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "sample_sample",
-                    'post': '</td>'
-                },
-                {
-                    'pre': '<td>',
-                    'field': field_base + "procedure_procedure",
-                    'post': '</td>'
-                }
-
-            ]
+        [
+            {
+                'pre': '',
+                'field': field_base + "Country",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td class="yyyyyyyyyyY">',
+                'field': field_base + "Namespace",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "ReportingYear",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "NetworkName",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "StationId",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "EUStationCode",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "StationName",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "SamplingPointId",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "UsedForAQD",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "AggregationType",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "ReportingMetric",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "Pollutant",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "AQValue",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "ExceedanceThreshold",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "Unit",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "DataCapture",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "VerificationFlag",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "StationType",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "StationArea",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "StationLatitude",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "StationLongitude",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "Zone",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "Zone Label",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "Zone Type",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "Zone Adjustment Used",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "Zone Declared Exceedance",
+                'post': '</td>'
+            }
+        ]
         ],
 
         paging: {

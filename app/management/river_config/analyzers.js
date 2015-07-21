@@ -17,42 +17,55 @@ var analyzers = {
 
 // Proprety mappings for aidedata
 // Describe how properties get indexed into ElasticSearch
+
 var aidedataMappings = {
-    "inspireNamespace" : {
+    "Country" : {
         "type" : "string",
         "analyzer" : "none"
     },
-    "pollutant" : {
+    "Namespace" : {
         "type" : "string",
         "analyzer" : "none"
     },
-    "aggregationType" : {
+    "Pollutant" : {
         "type" : "string",
         "analyzer" : "none"
     },
-    "samplingPoint_stationtype" : {
+    "AggregationType" : {
         "type" : "string",
         "analyzer" : "none"
     },
-    "station_stationarea" : {
+    "StationType" : {
         "type" : "string",
         "analyzer" : "none"
     },
-    "procedure_analyticaltechnique" : {
+    "UsedForAQD" : {
         "type" : "string",
         "analyzer" : "none"
     },
-    "samplingPoint_zone" : {
+    "Zone" : {
         "type" : "string",
         "analyzer" : "none"
     },
-    "samplingPoint_zoneCountryLabel" : {
+    "ZoneDeclaredExceedance" : {
         "type" : "string",
         "analyzer" : "none"
     },
-    "station_geo_pos" : {
+    "ZoneAdjustmentUsed" : {
+        "type" : "string",
+        "analyzer" : "none"
+    },
+    "geo_pos" : {
         "type" : "geo_point",
         "analyzer" : "none"
+    },
+    "AQvalue" : {
+        "type" : "double",
+        "analyzzer" : "none"
+    },
+    "DataCapture" : {
+        "type" : "double",
+        "analyzzer" : "none"
     }
 };
 
