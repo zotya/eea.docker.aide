@@ -1,14 +1,16 @@
 function addHeaders(){
     $("#facetview_results").append("<thead>" +
                                         "<tr>" +
+                                            "<th>Details</th>"+
                                             "<th>Country</th>"+
                                             "<th>Namespace</th>"+
                                             "<th>Reporting Year</th>"+
+                                            "<th>Network Id</th>"+
                                             "<th>Network Name</th>"+
                                             "<th>Station Id</th>"+
                                             "<th>EU Station Code</th>"+
                                             "<th>Station Name</th>"+
-                                            "<th>Sampling Poin Id</th>"+
+                                            "<th>Sampling Point Id</th>"+
                                             "<th>Used For AQD</th>"+
                                             "<th>Aggregation Type</th>"+
                                             "<th>Reporting Metric</th>"+
@@ -82,9 +84,8 @@ jQuery(document).ready(function($) {
         },
 
         facets: [
-//            {'field':'_id', 'display': '_id', 'order': 'term'},
             {'field':field_base + 'Country', 'display': 'Country', 'size':'40', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
-            {'field':field_base + 'ReportingYear', 'display': 'Reporting Year', 'size':'5', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']}, //?
+            {'field':field_base + 'ReportingYear', 'display': 'Reporting Year', 'size':'5', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
             {'field':field_base + 'Pollutant', 'display': 'Pollutant', 'size':'14', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
             {'field':field_base + 'AggregationType', 'display': 'Aggregation Type', 'size':'10', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
             {'field':field_base + 'AQvalue', 'display': 'AQ Value', 'size':'10000000', 'order': 'term', 'facet_display_options': ['sort', 'checkbox']},
@@ -99,49 +100,15 @@ jQuery(document).ready(function($) {
             {'field':field_base + 'geo_pos', 'display': 'Geo location', 'size':'2', 'order': 'term', 'facet_display_options': ['sort', 'checkbox'], 'operator':'OR'}
         ],
 
-/*?areURI \
-?Country \
-(?locURI as ?country_link) \
-?Namespace \
-(YEAR(?beginPosition) as ?ReportingYear) \
-?NetworkId ?NetworkName \
-?StationId ?EUStationCode ?StationName \
-?staURI \
-?statsURI \
-?SamplingPointId \
-?SamplingPointURI \
-(bif:either(?AQD > 0,'YES','NO') as ?UsedForAQD) \
-?AggregationType \
-?AggregationTypeURI \
-?ReportingMetric \
-?ReportingMetricURI \
-?Pollutant \
-?PollutantURI \
-(ROUND(?AQvalue * 100)/100.0 AS ?AQvalue) \
-?ExceedanceThreshold \
-(REPLACE(str(?Unit),'http://dd.eionet.europa.eu/vocabulary/uom/concentration/','') as ?Unit) \
-(ROUND(?DataCapture * 100)/100.0 AS ?DataCapture) \
-?VerificationFlag \
-?StationType \
-?typeURI \
-?StationArea \
-?areaURI \
-ROUND(?StationLat * 10000)/10000.0 AS ?StationLatitude \
-ROUND(?StationLong * 10000)/10000.0 AS ?StationLongitude \
-concat(str(?StationLat),',',str(?StationLong)) as ?geo_pos \
-?Zone \
-?ZoneURI \
-?ZoneLabel \
-?ZoneType \
-?zonetypeURI \
-?ZoneAdjustmentUsed \
-?corrURI \
-(bif:either(?Exceedance > 0,'YES','NO') as ?ZoneDeclaredExceedance) \*/
-
         result_display: [
         [
             {
-                'pre': '',
+                'pre':'<a class="detail_link" href="./details?aideid=',
+                'field': 'areURI',
+                'post': '">Details</a></td>'
+            },
+            {
+                'pre': '<td>',
                 'field': field_base + "Country",
                 'post': '</td>'
             },
@@ -153,6 +120,11 @@ concat(str(?StationLat),',',str(?StationLong)) as ?geo_pos \
             {
                 'pre': '<td>',
                 'field': field_base + "ReportingYear",
+                'post': '</td>'
+            },
+            {
+                'pre': '<td>',
+                'field': field_base + "NetworkId",
                 'post': '</td>'
             },
             {
@@ -202,7 +174,7 @@ concat(str(?StationLat),',',str(?StationLong)) as ?geo_pos \
             },
             {
                 'pre': '<td>',
-                'field': field_base + "AQValue",
+                'field': field_base + "AQvalue",
                 'post': '</td>'
             },
             {
@@ -252,22 +224,22 @@ concat(str(?StationLat),',',str(?StationLong)) as ?geo_pos \
             },
             {
                 'pre': '<td>',
-                'field': field_base + "Zone Label",
+                'field': field_base + "ZoneLabel",
                 'post': '</td>'
             },
             {
                 'pre': '<td>',
-                'field': field_base + "Zone Type",
+                'field': field_base + "ZoneType",
                 'post': '</td>'
             },
             {
                 'pre': '<td>',
-                'field': field_base + "Zone Adjustment Used",
+                'field': field_base + "ZoneAdjustmentUsed",
                 'post': '</td>'
             },
             {
                 'pre': '<td>',
-                'field': field_base + "Zone Declared Exceedance",
+                'field': field_base + "ZoneDeclaredExceedance",
                 'post': '</td>'
             }
         ]

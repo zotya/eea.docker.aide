@@ -27,9 +27,9 @@ mixin ext_link(item, url)
 
 block title
     if (data)
-        title= "Validated exceedence for " + data._shorttitle.value
+        title= "Assessment regime for " + data._shorttitle.value
     else
-        title= "Missing validated exceedence"
+        title= "Missing Assessment regime"
 
 block content
     if (data)
@@ -45,7 +45,7 @@ block content
                 span(class="breadcrumbs-current")= data._shorttitle.value
 
         h1
-            span= "Validated exceedence for " + data._shorttitle.value
+            span= "Assessment regime for " + data._shorttitle.value
 
         table(class="item_detail_table datatable")
             colgroup
