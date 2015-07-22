@@ -1,7 +1,7 @@
 {
     "//": "mapping used for details page",
     "details_mapping": [
-            {"name" : "name", "field" : "field", "title" : "field"},
+            {"name" : "name", "field" : "field", "title" : "field"}
         ],
 
     "//": "mapping used for csv/tsv download",

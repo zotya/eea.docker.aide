@@ -32,7 +32,10 @@ function getOptions() {
 
 var analyzers = analyzers.mappings;
 
-var callback = function(text) {
+var callback = function(text, showBody) {
+    if (showBody === undefined){
+        showBody = true;
+    }
     return function(err, statusCode, header, body) {
         console.log(text);
         if (err) {
@@ -40,7 +43,9 @@ var callback = function(text) {
         } else {
             console.log('  Successfuly ran query');
             console.log('  ResponseCode: ' + statusCode);
-            console.log('  ' + body);
+            if (showBody === true){
+                console.log('  ' + body);
+            }
         }
     };
 }
@@ -117,17 +122,15 @@ function createIndex() {
 }
 
 var fetchLimit = 1000;
+var batch_head = '{"index":{}}'
 function fetchQuery(idx, offset) {
     var elastic = require('nconf').get('elastic');
     var SparqlClient = require('sparql-client');
     var client = new SparqlClient(config.endpoint);
 
-    console.log(idx);
-console.log(offset);
     var tmp_query = syncReq.eeaRDF.query[idx] + " LIMIT " + fetchLimit + " OFFSET " + offset;
-//    console.log(tmp_query);
-    console.log(tmp_query);
     client.query(tmp_query).execute(function(error, results){
+        var rows_str = "";
         for (var i = 0; i < results.results.bindings.length; i++){
             var toindex = {};
             for (var j = 0; j < results.head.vars.length; j++){
@@ -135,16 +138,14 @@ console.log(offset);
                     toindex[results.head.vars[j]] = results.results.bindings[i][results.head.vars[j]].value;
                 }
             }
-            new esAPI(getOptions())
-                .POST(elastic.index+"/"+elastic.type+"/", toindex, callback("indexed 1 row"))
-                .execute();
+            rows_str += batch_head;
+            rows_str += "\n";
+            rows_str += JSON.stringify(toindex);
+            rows_str += "\n";
         }
-/*        if (results.head.vars.length < fetchLimit){
-            setTimeout(function(){fetchQuery(idx + 1, 0)}, 0);
-        }
-        else {
-            setTimeout(function(){fetchQuery(idx, offset + 1)}, 0);
-        }*/
+        new esAPI(getOptions())
+            .POST(elastic.index+"/"+elastic.type+"/_bulk", rows_str, callback("indexed " + results.results.bindings.length + " rows", false))
+            .execute();
     });
 }
 
