@@ -104,7 +104,7 @@ jQuery(document).ready(function($) {
         [
             {
                 'pre':'<a class="detail_link" href="./details?aideid=',
-                'field': 'areURI',
+                'field': '_id',
                 'post': '">Details</a></td>'
             },
             {

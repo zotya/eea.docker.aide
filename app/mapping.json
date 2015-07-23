@@ -20,14 +20,17 @@
             {"name" : "datacapture", "field" : "DataCapture", "title" : "Data Capture"},
             {"name" : "verificationflag", "field" : "VerificationFlag", "title" : "Verification Flag"},
             {"name" : "stationtype", "field" : "StationType", "title" : "Station Type"},
-            {"name" : "dtationarea", "field" : "StationArea", "title" : "Station Area"},
+            {"name" : "stationarea", "field" : "StationArea", "title" : "Station Area"},
             {"name" : "stationlatitude", "field" : "StationLatitude", "title" : "Station Latitude"},
             {"name" : "stationlongitude", "field" : "StationLongitude", "title" : "Station Longitude"},
             {"name" : "zone", "field" : "Zone", "title" : "Zone"},
             {"name" : "zonelabel", "field" : "ZoneLabel", "title" : "Zone Label"},
             {"name" : "zonetype", "field" : "ZoneType", "title" : "Zone Type"},
             {"name" : "zoneadjustmentused", "field" : "ZoneAdjustmentUsed", "title" : "Zone Adjustment Used"},
-            {"name" : "zonedeclaredexceedance", "field" : "ZoneDeclaredExceedance", "title" : "Zone Declared Exceedance"}
+            {"name" : "zonedeclaredexceedance", "field" : "ZoneDeclaredExceedance", "title" : "Zone Declared Exceedance"},
+            {"name" : "_shorttitle", "field" : "_shorttitle", "title" : "Title"},
+            {"name" : "_id", "field" : "_id", "title" : "_id"},
+            {"name" : "assmuri_link", "field" : "assMURI_link", "title" : "assMURI_link"}
         ],
 
     "//": "mapping used for csv/tsv download",

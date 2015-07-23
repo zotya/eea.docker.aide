@@ -138,7 +138,7 @@ function fetchQuery(idx, offset) {
                     toindex[results.head.vars[j]] = results.results.bindings[i][results.head.vars[j]].value;
                 }
             }
-            rows_str += batch_head;
+            rows_str += batch_head.split("{}").join('{"_id":"' + results.results.bindings[i]["_id"].value + '"}');
             rows_str += "\n";
             rows_str += JSON.stringify(toindex);
             rows_str += "\n";

@@ -316,7 +316,8 @@ PREFIX aq: <http://rdfdata.eionet.europa.eu/airquality/ontology/> \
 PREFIX aqr: <http://reference.eionet.europa.eu/aq/ontology/>\
 PREFIX aqdd: <http://dd.eionet.europa.eu/property/>\
 SELECT DISTINCT \
-?areURI \
+?assMURI as ?_id \
+?areURI\
 ?Country \
 (?locURI as ?country_link) \
 ?Namespace \
