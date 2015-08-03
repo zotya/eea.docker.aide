@@ -61,38 +61,14 @@ block content
         h1
             span= "Measurement " + data._shorttitle.value
 
-        table(class="item_detail_table datatable")
-            colgroup
-                col(style="width: 25%")
-                col(style="width: 75%")
-            +tr_th_td_assMURI(data._shorttitle, data._id)
-            +tr_th_td(data.country)
-            +tr_th_td(data.namespace)
-            +tr_th_td(data.reportingyear)
-            +tr_th_td(data.networkid)
-            +tr_th_td(data.networkname)
-            +tr_th_td(data.stationid)
-            +tr_th_td(data.eustationcode)
-            +tr_th_td(data.stationname)
-            +tr_th_td(data.samplingpointid)
-            +tr_th_td(data.usedforaqd)
-            +tr_th_td(data.aggregationtype)
-            +tr_th_td(data.reportingmetric)
-            +tr_th_td(data.pollutant)
-            +tr_th_td(data.aqvalue)
-            +tr_th_td(data.exceedancethreshold)
-            +tr_th_td(data.unit)
-            +tr_th_td(data.datacapture)
-            +tr_th_td(data.verificationflag)
-            +tr_th_td(data.stationtype)
-            +tr_th_td(data.stationarea)
-            +tr_th_td(data.stationlatitude)
-            +tr_th_td(data.stationlongitude)
-            +tr_th_td(data.zone)
-            +tr_th_td(data.zonelabel)
-            +tr_th_td(data.zonetype)
-            +tr_th_td(data.zoneadjustmentused)
-            +tr_th_td(data.zonedeclaredexceedance)
+        each section in sections
+            h2= section.title
+            table(class="item_detail_table datatable")
+                colgroup
+                    col(style="width: 25%")
+                    col(style="width: 75%")
+                each field in section.fields
+                    +tr_th_td(data[field.name])
 
     else
         div(class = "portalMessage errorMessage")

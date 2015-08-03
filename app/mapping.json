@@ -2,8 +2,8 @@
     "details_settings" : {
         "show_links": true,
         "sections": [
-            {"name":"section1", "title":"Section 1"},
-            {"name":"section2", "title":"Section 2"}
+            {"name":"section1", "title":"Section 1", "pos":0},
+            {"name":"section2", "title":"Section 2", "pos":1}
         ]
     },
     "listing_settings" : {
@@ -28,6 +28,11 @@
             "csv_tsv": {
                 "title": "id",
                 "visible": true,
+                "pos": 0
+            },
+            "details": {
+                "title": "_id",
+                "visible": false,
                 "pos": 0
             }
         },
@@ -763,6 +768,7 @@
                 "visible" : false
             },
             "details": {
+                "title": "geo_pos",
                 "visible": false
             },
             "facet": {
