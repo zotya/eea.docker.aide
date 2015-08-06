@@ -2,8 +2,7 @@
     "details_settings" : {
         "show_links": true,
         "sections": [
-            {"name":"section1", "title":"Section 1", "pos":0},
-            {"name":"section2", "title":"Section 2", "pos":1}
+            {"name":"default", "title":"", "pos":0}
         ]
     },
     "listing_settings" : {
@@ -48,7 +47,7 @@
             "details": {
                 "title": "Country",
                 "pos" : 1,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -78,7 +77,7 @@
             "details": {
                 "title": "Namespace",
                 "pos" : 2,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -102,7 +101,7 @@
             "details": {
                 "title": "Reporting Year",
                 "pos" : 3,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -132,7 +131,7 @@
             "details": {
                 "title": "Network Id",
                 "pos" : 4,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -156,7 +155,7 @@
             "details": {
                 "title": "Network Name",
                 "pos" : 5,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -180,7 +179,7 @@
             "details": {
                 "title": "Station Id",
                 "pos" : 6,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -204,7 +203,7 @@
             "details": {
                 "title": "EU Station Code",
                 "pos" : 7,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -228,7 +227,7 @@
             "details": {
                 "title": "Station Name",
                 "pos" : 8,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -252,7 +251,7 @@
             "details": {
                 "title": "Sampling Point Id",
                 "pos" : 9,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -276,7 +275,7 @@
             "details": {
                 "title": "Used For AQD",
                 "pos" : 10,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -306,7 +305,7 @@
             "details": {
                 "title": "Aggregation Type",
                 "pos" : 11,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -336,7 +335,7 @@
             "details": {
                 "title": "Reporting Metric",
                 "pos" : 12,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -360,7 +359,7 @@
             "details": {
                 "title": "Pollutant",
                 "pos" : 13,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -390,7 +389,7 @@
             "details": {
                 "title": "AQ Value",
                 "pos" : 14,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -419,7 +418,7 @@
             "details": {
                 "title": "Exceedance Threshold",
                 "pos" : 15,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -443,7 +442,7 @@
             "details": {
                 "title": "Unit",
                 "pos" : 16,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -467,7 +466,7 @@
             "details": {
                 "title": "Data Capture",
                 "pos" : 17,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -496,7 +495,7 @@
             "details": {
                 "title": "Verification Flag",
                 "pos" : 18,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -520,7 +519,7 @@
             "details": {
                 "title": "Station Type",
                 "pos" : 19,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -550,7 +549,7 @@
             "details": {
                 "title": "Station Area",
                 "pos" : 20,
-                "section": "section1",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -580,7 +579,7 @@
             "details": {
                 "title": "Station Latitude",
                 "pos" : 21,
-                "section": "section2",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -604,7 +603,7 @@
             "details": {
                 "title": "Station Longitude",
                 "pos" : 22,
-                "section": "section2",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -628,7 +627,7 @@
             "details": {
                 "title": "Zone",
                 "pos" : 23,
-                "section": "section2",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -658,7 +657,7 @@
             "details": {
                 "title": "Zone Label",
                 "pos" : 24,
-                "section": "section2",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -682,7 +681,7 @@
             "details": {
                 "title": "Zone Type",
                 "pos" : 25,
-                "section": "section2",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -712,7 +711,7 @@
             "details": {
                 "title": "Zone Adjustment Used",
                 "pos" : 26,
-                "section": "section2",
+                "section": "default",
                 "visible": true
             },
             "facet": {
@@ -742,7 +741,7 @@
             "details": {
                 "title": "Zone Declared Exceedance",
                 "pos" : 27,
-                "section": "section2",
+                "section": "default",
                 "visible": true
             },
             "facet": {

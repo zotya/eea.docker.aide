@@ -62,7 +62,8 @@ block content
             span= "Measurement " + data._shorttitle.value
 
         each section in sections
-            h2= section.title
+            if (section.title)
+                h2= section.title
             table(class="item_detail_table datatable")
                 colgroup
                     col(style="width: 25%")
