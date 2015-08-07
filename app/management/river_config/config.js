@@ -300,61 +300,68 @@ WHERE\
 
 var filterTemplate_ = "FILTER (?s in (<slist>))"
 
-var filterLength = 1000;
+var filterLength = 100000;
 
 var sQuery_ = "SELECT ?s WHERE { ?s a <http://reference.eionet.europa.eu/aq/ontology/ValidatedExceedence>} order by ?s"
 
 
 var queryTemplate = 
 
-"PREFIX rod: <http://rod.eionet.europa.eu/schema.rdf#> \
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#> \
-PREFIX dcterms: <http://purl.org/dc/terms/> \
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> \
-PREFIX cr: <http://cr.eionet.europa.eu/ontologies/contreg.rdf#> \
-PREFIX aq: <http://rdfdata.eionet.europa.eu/airquality/ontology/> \
+"PREFIX rod: <http://rod.eionet.europa.eu/schema.rdf#>\
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>\
+PREFIX dcterms: <http://purl.org/dc/terms/>\
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\
+PREFIX cr: <http://cr.eionet.europa.eu/ontologies/contreg.rdf#>\
+PREFIX aq: <http://rdfdata.eionet.europa.eu/airquality/ontology/>\
 PREFIX aqr: <http://reference.eionet.europa.eu/aq/ontology/>\
 PREFIX aqdd: <http://dd.eionet.europa.eu/property/>\
+\
 SELECT DISTINCT \
-?assMURI as ?_id \
-?areURI\
-?Country \
-(?locURI as ?country_link) \
-?Namespace \
-(YEAR(?beginPosition) as ?ReportingYear) \
-?NetworkId ?NetworkName \
-?StationId ?EUStationCode ?StationName \
-?staURI \
-?statsURI \
+ \
+(?relemiURI as ?_id) \
+?Country  \
+(?locURI as ?Country_link) \
+?Namespace  \
+(YEAR(?beginPosition) as ?ReportingYear)  \
+?NetworkId  \
+(?NetURI as ?NetworkId_link) \
+?NetworkName \
+?StationId \
+(?staURI as ?StationId_link)  \
+?EUStationCode  \
+?StationName \
 ?SamplingPointId \
-?SamplingPointURI \
-(bif:either(?AQD > 0,'YES','NO') as ?UsedForAQD) \
+(?SamplingPointURI as ?SamplingPointId_link) \
+(bif:either(?AQD > 0,'YES','NO') as ?UsedForAQD)  \
 ?AggregationType \
-?AggregationTypeURI \
+(?AggregationTypeURI as ?AggregationType_link) \
 ?ReportingMetric \
-?ReportingMetricURI \
+(?ReportingMetricURI as ?ReportingMetric_link) \
+?ObjectiveType \
+(?ObjectiveTypeURI as ?ObjectiveType_link) \
+?ProtectionTarget \
+(?ProtectionTargetURI as ?ProtectionTarget_link) \
 ?Pollutant \
-?PollutantURI \
+(?PollutantURI as ?Pollutant_link)  \
 (ROUND(?AQvalue * 100)/100.0 AS ?AQvalue) \
+(?statsURI as ?AQvalue_link) \
 ?ExceedanceThreshold \
-(REPLACE(str(?Unit),'http://dd.eionet.europa.eu/vocabulary/uom/concentration/','') as ?Unit) \
-(ROUND(?DataCapture * 100)/100.0 AS ?DataCapture) \
+(?thresURI as ?ExceedanceThreshold_link) \
+(bif:either(substr(str(?Unit),1,56) = 'http://dd.eionet.europa.eu/vocabulary/uom/concentration/',REPLACE(str(?Unit),'http://dd.eionet.europa.eu/vocabulary/uom/concentration/',''),REPLACE(str(?Unit),'http://dd.eionet.europa.eu/vocabulary/uom/statistics/','')) as ?Unit) \
+(ROUND(xsd:decimal(?DataCoverage) * 100)/100.0 AS ?DataCoverage) \
 ?VerificationFlag \
+(?verURI as ?VerificationFlag_link) \
 ?StationType \
-?typeURI \
+(?typeURI as ?StationType_link) \
 ?StationArea \
-?areaURI \
-ROUND(?StationLat * 10000)/10000.0 AS ?StationLatitude \
+(?areaURI as ?StationArea_link) \
+ROUND(?StationLat * 10000)/10000.0 AS ?StationLatitude  \
 ROUND(?StationLong * 10000)/10000.0 AS ?StationLongitude \
-concat(str(?StationLat),',',str(?StationLong)) as ?geo_pos \
 ?Zone \
-?ZoneURI \
+(?ZoneURI as ?Zone_link) \
 ?ZoneLabel \
 ?ZoneType \
-?zonetypeURI \
-?ZoneAdjustmentUsed \
-?corrURI \
-(bif:either(?Exceedance > 0,'YES','NO') as ?ZoneDeclaredExceedance) \
+(?zonetypeURI as ?ZoneType_link) \
  \
 WHERE { \
  \
@@ -363,22 +370,19 @@ SELECT DISTINCT * \
  \
  WHERE { \
  \
-  ?areURI a aqr:AssessmentRegime; \
+  ?SamplingPointURI a aqr:SamplingPoint ; \
             dcterms:source ?source; \
-            aqr:inspireId ?AssessmentId; \
-            aqr:inspireNamespace ?Namespace; \
-            aqr:pollutant ?PollutantURI; \
-            aqr:zone ?ZoneURI; \
-            aqr:assessmentMethods ?assMURI . \
+            aqr:inspireNamespace ?Namespace . \
  \
-OPTIONAL{?areURI aqr:assessmentThreshold ?assURI} . \
+ ?envelope rod:hasFile ?source . \
+ ?envelope rod:locality ?locURI . \
+ ?locURI rdfs:label ?Country . \
+ \
+OPTIONAL{?SamplingPointURI aqr:zone ?ZoneURI} . \
 OPTIONAL{?ZoneURI aqr:zoneCode ?Zone} . \
 OPTIONAL{?ZoneURI rdfs:label ?ZoneLabel} . \
 OPTIONAL{?ZoneURI aqr:zoneType ?zonetypeURI} . \
 OPTIONAL{?zonetypeURI rdfs:label ?ZoneType} . \
- \
-?assMURI aqr:assessmentType <http://dd.eionet.europa.eu/vocabulary/aq/assessmenttype/fixed> .      \
-?assMURI aqr:samplingPointAssessmentMetadata ?SamplingPointURI . \
  \
 ?SamplingPointURI aqr:belongsTo ?NetURI . \
 ?SamplingPointURI aqr:broader ?staURI . \
@@ -399,70 +403,48 @@ OPTIONAL{?NetURI aqr:name ?NetworkName} . \
  \
 OPTIONAL{?SamplingPointURI aqr:usedAQD ?AQD} . \
  \
-OPTIONAL{?assURI aqr:protectionTarget ?ProtectionTargetURI} . \
-OPTIONAL{?assURI aqr:objectiveType ?ObjectiveTypeURI} .            \
-OPTIONAL{?assURI aqr:reportingMetric ?ReportingMetricURI} . \
- \
-OPTIONAL{?ReportingMetricURI rdfs:label ?ReportingMetric} . \
-OPTIONAL{?ObjectiveTypeURI rdfs:label ?ObjectiveType} . \
- \
 ?statsURI aqr:samplingPoint ?SamplingPointURI . \
+ \
+?statsURI aqr:pollutant ?PollutantURI . \
+?PollutantURI skos:notation ?Pollutant . \
+ \
 ?statsURI aqr:airqualityValue ?AQvalue . \
-?statsURI aqr:datacapturePct ?DataCapture . \
+?statsURI aqr:datacoveragePct ?DataCoverage . \
+ \
 ?statsURI aqr:observationVerification ?verURI . \
 ?verURI rdfs:label ?VerificationFlag . \
+ \
 ?statsURI aqr:aggregationType ?AggregationTypeURI . \
 OPTIONAL{?AggregationTypeURI rdfs:label ?AggregationType} . \
+OPTIONAL{?AggregationTypeURI aqdd:broaderMetric ?ReportingMetricURI} . \
+ \
 ?statsURI aqr:beginPosition ?beginPosition . \
 ?statsURI aqr:station_lat ?StationLat . \
 ?statsURI aqr:station_lon ?StationLong . \
  \
 OPTIONAL{?statsURI aqr:unit ?Unit} . \
  \
- ?envelope rod:hasFile ?source . \
- ?envelope rod:obligation <http://rod.eionet.europa.eu/obligations/671> . \
- ?envelope rod:locality ?locURI . \
- ?locURI rdfs:label ?Country . \
- \
 ?thresURI aqdd:relatedPollutant ?PollutantURI . \
 ?thresURI aqdd:aggregationProcess ?AggregationTypeURI . \
 ?thresURI aqdd:hasReportingMetric ?ReportingMetricURI . \
+?thresURI aqdd:hasObjectiveType ?ObjectiveTypeURI . \
+?thresURI aqdd:hasProtectionTarget ?ProtectionTargetURI . \
 ?thresURI aqdd:exceedanceThreshold ?ExceedanceThreshold . \
  \
- \
- ?attURI a aqr:Attainment ; \
-                aqr:inspireId ?AttainmentId ; \
-                aqr:environmentalObjective ?envURI ; \
-                aqr:assessment ?areURI ; \
-                aqr:zone ?ZoneURI ; \
-                aqr:pollutant ?PollutantURI . \
- \
-?areURI aqr:inspireId ?AssessmentId . \
-?PollutantURI skos:notation ?Pollutant . \
- \
-OPTIONAL{?attURI aqr:exceedanceFinal ?Exceedance} . \
- \
-OPTIONAL{?attURI aqr:finalDeductionMethod ?corrURI} .         \
-OPTIONAL{?corrURI rdfs:label ?ZoneAdjustmentUsed} . \
- \
-OPTIONAL{?envURI aqr:reportingMetric ?ReportingMetricURI} . \
-OPTIONAL{?envURI aqr:objectiveType ?ObjectiveTypeURI} . \
-OPTIONAL{?envURI aqr:protectionTarget ?ProtectionTargetURI} . \
-OPTIONAL{?AggregationTypeURI aqdd:broaderMetric ?ReportingMetricURI} . \
- \
+?ReportingMetricURI rdfs:label ?ReportingMetric . \
+?ObjectiveTypeURI rdfs:label ?ObjectiveType . \
+?ProtectionTargetURI rdfs:label ?ProtectionTarget . \
  \
 FILTER regex(?Namespace,'ES.BDCA.AQD') . \
-FILTER regex(?PollutantURI, 'http://dd.eionet.europa.eu/vocabulary/aq/pollutant/7$') .\
-FILTER (YEAR(?beginPosition) = 2013) . \
+FILTER regex(?PollutantURI, 'http://dd.eionet.europa.eu/vocabulary/aq/pollutant/5$') . \
  \
 }} \
- \
  \
 }  \
 ORDER BY  \
 ?Country  \
 ASC(?PollutantURI)  \
-DESC(?AggregationType)";
+DESC(?AggregationType) ASC(?beginPosition)";
 
 var filterTemplate = "FILTER (?areURI in (<slist>))";
 
