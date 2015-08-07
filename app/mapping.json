@@ -782,6 +782,21 @@
             "csv_tsv": {
                 "visible": false
             }
+        },
+        {
+            "name": "country_link",
+            "is_link": true,
+            "link_for": "Country"
+        },
+        {
+            "name": "ReportingMetricURI",
+            "is_link": true,
+            "link_for": "ReportingMetric"
+        },
+        {
+            "name": "PollutantURI",
+            "is_link": true,
+            "link_for": "Pollutant"
         }
     ]
 }

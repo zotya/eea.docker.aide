@@ -15,29 +15,15 @@ mixin tr_th_td(item, link_item)
     if(item && item.value)
         tr
             th= item.label
-            if(link_item)
+            if(item.link)
                 td
-                    +ext_link(item, link_item.value)
+                    +ext_link(item)
             else
                 td
                     span(class="simple-value")= item.value
 
-mixin tr_th_td_assMURI(item, link_item)
-    if(item && item.value)
-        tr
-            th= item.label
-            if(link_item)
-                td
-                    +ext_link_assMURI(item, link_item.value)
-            else
-                td
-                    span(class="simple-value")= item.value
-
-mixin ext_link_assMURI(item, url)
-    a(href= "http://cr.eionet.europa.eu/factsheet.action?uri=nodeID://" +url  title="go to source details" class="detail_extlink")= item.value
-
-mixin ext_link(item, url)
-    a(href= "http://cr.eionet.europa.eu/factsheet.action?uri=" +url  title="go to source details" class="detail_extlink")= item.value
+mixin ext_link(item)
+    a(href= "http://cr.eionet.europa.eu/factsheet.action?uri=" +item.link  title="go to source details" class="detail_extlink")= item.value
 
 block title
     if (data)
