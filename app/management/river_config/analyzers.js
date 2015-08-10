@@ -63,7 +63,7 @@ var aidedataMappings = {
         "type" : "double",
         "analyzzer" : "none"
     },
-    "DataCapture" : {
+    "DataCoverage" : {
         "type" : "double",
         "analyzzer" : "none"
     }

@@ -348,17 +348,65 @@
             }
         },
         {
+            "name": "ObjectiveType",
+            "is_id": false,
+            "is_link": false,
+            "listing": {
+                "title": "Objective Type",
+                "visible" : true,
+                "pos" : 13
+            },
+            "details": {
+                "title": "Objective Type",
+                "pos" : 13,
+                "section": "default",
+                "visible": true
+            },
+            "facet": {
+                "visible": false
+            },
+            "csv_tsv": {
+                "title": "Objective Type",
+                "visible": true,
+                "pos": 13
+            }
+        },
+        {
+            "name": "ProtectionTarget",
+            "is_id": false,
+            "is_link": false,
+            "listing": {
+                "title": "Protection Target",
+                "visible" : true,
+                "pos" : 14
+            },
+            "details": {
+                "title": "Protection Target",
+                "pos" : 14,
+                "section": "default",
+                "visible": true
+            },
+            "facet": {
+                "visible": false
+            },
+            "csv_tsv": {
+                "title": "Protection Target",
+                "visible": true,
+                "pos": 14
+            }
+        },
+        {
             "name": "Pollutant",
             "is_id": false,
             "is_link": false,
             "listing": {
                 "title": "Pollutant",
                 "visible" : true,
-                "pos" : 13
+                "pos" : 15
             },
             "details": {
                 "title": "Pollutant",
-                "pos" : 13,
+                "pos" : 15,
                 "section": "default",
                 "visible": true
             },
@@ -374,7 +422,7 @@
             "csv_tsv": {
                 "title": "Pollutant",
                 "visible": true,
-                "pos": 13
+                "pos": 15
             }
         },
         {
@@ -384,11 +432,11 @@
             "listing": {
                 "title": "AQ Value",
                 "visible" : true,
-                "pos" : 14
+                "pos" : 16
             },
             "details": {
                 "title": "AQ Value",
-                "pos" : 14,
+                "pos" : 16,
                 "section": "default",
                 "visible": true
             },
@@ -403,7 +451,7 @@
             "csv_tsv": {
                 "title": "AQ Value",
                 "visible": true,
-                "pos": 14
+                "pos": 16
             }
         },
         {
@@ -413,11 +461,11 @@
             "listing": {
                 "title": "Exceedance Threshold",
                 "visible" : true,
-                "pos" : 15
+                "pos" : 17
             },
             "details": {
                 "title": "Exceedance Threshold",
-                "pos" : 15,
+                "pos" : 17,
                 "section": "default",
                 "visible": true
             },
@@ -427,7 +475,7 @@
             "csv_tsv": {
                 "title": "Exceedance Threshold",
                 "visible": true,
-                "pos": 15
+                "pos": 17
             }
         },
         {
@@ -437,11 +485,11 @@
             "listing": {
                 "title": "Unit",
                 "visible" : true,
-                "pos" : 16
+                "pos" : 18
             },
             "details": {
                 "title": "Unit",
-                "pos" : 16,
+                "pos" : 18,
                 "section": "default",
                 "visible": true
             },
@@ -451,27 +499,27 @@
             "csv_tsv": {
                 "title": "Unit",
                 "visible": true,
-                "pos": 16
+                "pos": 18
             }
         },
         {
-            "name": "DataCapture",
+            "name": "DataCoverage",
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "Data Capture",
+                "title": "Data Coverage",
                 "visible" : true,
-                "pos" : 17
+                "pos" : 19
             },
             "details": {
-                "title": "Data Capture",
-                "pos" : 17,
+                "title": "Data Coverage",
+                "pos" : 19,
                 "section": "default",
                 "visible": true
             },
             "facet": {
                 "visible": true,
-                "title": "Data Capture",
+                "title": "Data Coverage",
                 "pos": 5,
                 "type": "range",
                 "order": "term",
@@ -480,7 +528,7 @@
             "csv_tsv": {
                 "title": "Data Capture",
                 "visible": true,
-                "pos": 17
+                "pos": 19
             }
         },
         {
@@ -490,11 +538,11 @@
             "listing": {
                 "title": "Verification Flag",
                 "visible" : true,
-                "pos" : 18
+                "pos" : 20
             },
             "details": {
                 "title": "Verification Flag",
-                "pos" : 18,
+                "pos" : 20,
                 "section": "default",
                 "visible": true
             },
@@ -504,7 +552,7 @@
             "csv_tsv": {
                 "title": "Verification Flag",
                 "visible": true,
-                "pos": 18
+                "pos": 20
             }
         },
         {
@@ -514,11 +562,11 @@
             "listing": {
                 "title": "Station Type",
                 "visible" : true,
-                "pos" : 19
+                "pos" : 21
             },
             "details": {
                 "title": "Station Type",
-                "pos" : 19,
+                "pos" : 21,
                 "section": "default",
                 "visible": true
             },
@@ -534,7 +582,7 @@
             "csv_tsv": {
                 "title": "Station Type",
                 "visible": true,
-                "pos": 19
+                "pos": 21
             }
         },
         {
@@ -544,11 +592,11 @@
             "listing": {
                 "title": "Station Area",
                 "visible" : true,
-                "pos" : 20
+                "pos" : 22
             },
             "details": {
                 "title": "Station Area",
-                "pos" : 20,
+                "pos" : 22,
                 "section": "default",
                 "visible": true
             },
@@ -564,7 +612,7 @@
             "csv_tsv": {
                 "title": "Station Area",
                 "visible": true,
-                "pos": 20
+                "pos": 22
             }
         },
         {
@@ -574,11 +622,11 @@
             "listing": {
                 "title": "Station Latitude",
                 "visible" : true,
-                "pos" : 21
+                "pos" : 23
             },
             "details": {
                 "title": "Station Latitude",
-                "pos" : 21,
+                "pos" : 23,
                 "section": "default",
                 "visible": true
             },
@@ -588,7 +636,7 @@
             "csv_tsv": {
                 "title": "Station Latitude",
                 "visible": true,
-                "pos": 21
+                "pos": 23
             }
         },
         {
@@ -598,11 +646,11 @@
             "listing": {
                 "title": "Station Longitude",
                 "visible" : true,
-                "pos" : 22
+                "pos" : 24
             },
             "details": {
                 "title": "Station Longitude",
-                "pos" : 22,
+                "pos" : 24,
                 "section": "default",
                 "visible": true
             },
@@ -612,7 +660,7 @@
             "csv_tsv": {
                 "title": "Station Longitude",
                 "visible": true,
-                "pos": 22
+                "pos": 24
             }
         },
         {
@@ -622,11 +670,11 @@
             "listing": {
                 "title": "Zone",
                 "visible" : true,
-                "pos" : 23
+                "pos" : 25
             },
             "details": {
                 "title": "Zone",
-                "pos" : 23,
+                "pos" : 25,
                 "section": "default",
                 "visible": true
             },
@@ -642,7 +690,7 @@
             "csv_tsv": {
                 "title": "Zone",
                 "visible": true,
-                "pos": 23
+                "pos": 25
             }
         },
         {
@@ -652,11 +700,11 @@
             "listing": {
                 "title": "Zone",
                 "visible" : true,
-                "pos" : 24
+                "pos" : 26
             },
             "details": {
                 "title": "Zone Label",
-                "pos" : 24,
+                "pos" : 26,
                 "section": "default",
                 "visible": true
             },
@@ -666,7 +714,7 @@
             "csv_tsv": {
                 "title": "Zone Label",
                 "visible": true,
-                "pos": 24
+                "pos": 26
             }
         },
         {
@@ -676,11 +724,11 @@
             "listing": {
                 "title": "Zone Type",
                 "visible" : true,
-                "pos" : 25
+                "pos" : 27
             },
             "details": {
                 "title": "Zone Type",
-                "pos" : 25,
+                "pos" : 27,
                 "section": "default",
                 "visible": true
             },
@@ -696,107 +744,88 @@
             "csv_tsv": {
                 "title": "Zone Type",
                 "visible": true,
-                "pos": 25
-            }
-        },
-        {
-            "name": "ZoneAdjustmentUsed",
-            "is_id": false,
-            "is_link": false,
-            "listing": {
-                "title": "Zone Adjustment Used",
-                "visible" : true,
-                "pos" : 26
-            },
-            "details": {
-                "title": "Zone Adjustment Used",
-                "pos" : 26,
-                "section": "default",
-                "visible": true
-            },
-            "facet": {
-                "visible": true,
-                "title": "Zone Adjustment Used",
-                "pos": 12,
-                "type": "facet",
-                "size": 2,
-                "order": "term",
-                "facet_display_options": ["sort", "checkbox"]
-            },
-            "csv_tsv": {
-                "title": "Zone Adjustment Used",
-                "visible": true,
-                "pos": 26
-            }
-        },
-        {
-            "name": "ZoneDeclaredExceedance",
-            "is_id": false,
-            "is_link": false,
-            "listing": {
-                "title": "Zone Declared Exceedance",
-                "visible" : true,
-                "pos" : 27
-            },
-            "details": {
-                "title": "Zone Declared Exceedance",
-                "pos" : 27,
-                "section": "default",
-                "visible": true
-            },
-            "facet": {
-                "visible": true,
-                "title": "Zone Declared Exceedance",
-                "pos": 11,
-                "type": "facet",
-                "size": 2,
-                "order": "term",
-                "facet_display_options": ["sort", "checkbox"]
-            },
-            "csv_tsv": {
-                "title": "Zone Declared Exceedance",
-                "visible": true,
                 "pos": 27
             }
         },
         {
-            "name": "geo_pos",
-            "is_id": false,
-            "is_link": false,
-            "listing": {
-                "visible" : false
-            },
-            "details": {
-                "title": "geo_pos",
-                "visible": false
-            },
-            "facet": {
-                "visible": true,
-                "title": "Geo location",
-                "pos": 13,
-                "type": "geo",
-                "order": "term",
-                "facet_display_options": ["sort", "checkbox"],
-                "operator": "OR"
-            },
-            "csv_tsv": {
-                "visible": false
-            }
-        },
-        {
-            "name": "country_link",
+            "name": "Country_link",
             "is_link": true,
             "link_for": "Country"
         },
         {
-            "name": "ReportingMetricURI",
+            "name": "NetworkId_link",
+            "is_link": true,
+            "link_for": "NetworkId"
+        },
+        {
+            "name": "StationId_link",
+            "is_link": true,
+            "link_for": "StationId"
+        },
+        {
+            "name": "SamplingPointId_link",
+            "is_link": true,
+            "link_for": "SamplingPointId"
+        },
+        {
+            "name": "AggregationType_link",
+            "is_link": true,
+            "link_for": "AggregationType"
+        },
+        {
+            "name": "ReportingMetric_link",
             "is_link": true,
             "link_for": "ReportingMetric"
         },
         {
-            "name": "PollutantURI",
+            "name": "ObjectiveType_link",
+            "is_link": true,
+            "link_for": "ObjectiveType"
+        },
+        {
+            "name": "ProtectionTarget_link",
+            "is_link": true,
+            "link_for": "ProtectionTarget"
+        },
+        {
+            "name": "Pollutant_link",
             "is_link": true,
             "link_for": "Pollutant"
+        },
+        {
+            "name": "AQvalue_link",
+            "is_link": true,
+            "link_for": "AQvalue"
+        },
+        {
+            "name": "ExceedanceThreshold_link",
+            "is_link": true,
+            "link_for": "ExceedanceThreshold"
+        },
+        {
+            "name": "VerificationFlag_link",
+            "is_link": true,
+            "link_for": "VerificationFlag"
+        },
+        {
+            "name": "StationType_link",
+            "is_link": true,
+            "link_for": "StationType"
+        },
+        {
+            "name": "StationArea_link",
+            "is_link": true,
+            "link_for": "StationArea"
+        },
+        {
+            "name": "Zone_link",
+            "is_link": true,
+            "link_for": "Zone"
+        },
+        {
+            "name": "ZoneType_link",
+            "is_link": true,
+            "link_for": "ZoneType"
         }
     ]
 }

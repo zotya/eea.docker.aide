@@ -318,7 +318,7 @@ PREFIX aqdd: <http://dd.eionet.europa.eu/property/>\
 \
 SELECT DISTINCT \
  \
-(?relemiURI as ?_id) \
+?statsURI as ?_id \
 ?Country  \
 (?locURI as ?Country_link) \
 ?Namespace  \
@@ -357,6 +357,7 @@ SELECT DISTINCT \
 (?areaURI as ?StationArea_link) \
 ROUND(?StationLat * 10000)/10000.0 AS ?StationLatitude  \
 ROUND(?StationLong * 10000)/10000.0 AS ?StationLongitude \
+concat(str(?StationLat),',',str(?StationLong)) as ?geo_pos \
 ?Zone \
 (?ZoneURI as ?Zone_link) \
 ?ZoneLabel \
