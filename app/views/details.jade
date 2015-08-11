@@ -11,20 +11,6 @@ block extrajavascripts
 block extrastyles
     link(rel="stylesheet", href="css/aide.facetview.css")
 
-mixin tr_th_td(item, link_item)
-    if(item && item.value)
-        tr
-            th= item.label
-            if(item.link)
-                td
-                    +ext_link(item)
-            else
-                td
-                    span(class="simple-value")= item.value
-
-mixin ext_link(item)
-    a(href= "http://cr.eionet.europa.eu/factsheet.action?uri=" +item.link  title="go to source details" class="detail_extlink")= item.value
-
 block title
     if (data)
         title= "Measurement " + data._shorttitle.value
@@ -47,15 +33,7 @@ block content
         h1
             span= "Measurement " + data._shorttitle.value
 
-        each section in sections
-            if (section.title)
-                h2= section.title
-            table(class="item_detail_table datatable")
-                colgroup
-                    col(style="width: 25%")
-                    col(style="width: 75%")
-                each field in section.fields
-                    +tr_th_td(data[field.name])
+        +detail_tables (sections, data)
 
     else
         div(class = "portalMessage errorMessage")
