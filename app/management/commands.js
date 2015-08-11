@@ -64,7 +64,6 @@ function removeData() {
 }
 
 function buildQueries(results) {
-console.log(config.queryTemplate);
     syncReq.eeaRDF.query.push(config.queryTemplate);
     return;
     var slist = "";
