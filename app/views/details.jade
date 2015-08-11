@@ -33,7 +33,7 @@ block content
         h1
             span= "Measurement " + data._shorttitle.value
 
-        +detail_tables (sections, data)
+        +detail_tables (sections, data, "http://cr.eionet.europa.eu/factsheet.action?uri=")
 
     else
         div(class = "portalMessage errorMessage")
