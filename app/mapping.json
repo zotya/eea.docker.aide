@@ -748,6 +748,29 @@
             }
         },
         {
+            "name": "geo_pos",
+            "is_id": false,
+            "is_link": false,
+            "listing": {
+                "visible" : false
+            },
+            "details": {
+                "visible": false
+            },
+            "facet": {
+                "visible": true,
+                "title": "Geo Location",
+                "pos": 11,
+                "type": "geo",
+                "size": 2,
+                "order": "term",
+                "facet_display_options": ["sort", "checkbox"]
+            },
+            "csv_tsv": {
+                "visible": false
+            }
+        },
+        {
             "name": "Country_link",
             "is_link": true,
             "link_for": "Country"
