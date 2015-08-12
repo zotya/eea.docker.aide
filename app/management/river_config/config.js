@@ -382,7 +382,7 @@ SELECT DISTINCT * \
 OPTIONAL{?SamplingPointURI aqr:zone ?ZoneURI} . \
 OPTIONAL{?ZoneURI aqr:zoneCode ?Zone} . \
 OPTIONAL{?ZoneURI rdfs:label ?ZoneLabel} . \
-OPTIONAL{?ZoneURI aqr:zoneType ?zonetypeURI} . \
+OPTIONAL{?ZoneURI aqr:aqdZoneType ?zonetypeURI} .\
 OPTIONAL{?zonetypeURI rdfs:label ?ZoneType} . \
  \
 ?SamplingPointURI aqr:belongsTo ?NetURI . \

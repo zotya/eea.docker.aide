@@ -66,6 +66,14 @@ var aidedataMappings = {
     "DataCoverage" : {
         "type" : "double",
         "analyzzer" : "none"
+    },
+    "StationArea" : {
+        "type" : "string",
+        "analyzer" : "none"
+    },
+    "ZoneType" : {
+        "type" : "string",
+        "analyzer" : "none"
     }
 };
 
