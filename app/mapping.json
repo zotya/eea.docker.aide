@@ -124,12 +124,12 @@
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "Network Id",
+                "title": "AQ Network",
                 "visible" : true,
                 "pos" : 4
             },
             "details": {
-                "title": "Network Id",
+                "title": "AQ Network",
                 "pos" : 4,
                 "section": "default",
                 "visible": true
@@ -138,7 +138,7 @@
                 "visible": false
             },
             "csv_tsv": {
-                "title": "Network Id",
+                "title": "AQ Network",
                 "visible": true,
                 "pos": 4
             }
@@ -148,12 +148,12 @@
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "Network Name",
+                "title": "AQ Network Name",
                 "visible" : true,
                 "pos" : 5
             },
             "details": {
-                "title": "Network Name",
+                "title": "AQ Network Name",
                 "pos" : 5,
                 "section": "default",
                 "visible": true
@@ -162,7 +162,7 @@
                 "visible": false
             },
             "csv_tsv": {
-                "title": "Network Name",
+                "title": "AQ Network Name",
                 "visible": true,
                 "pos": 5
             }
@@ -172,12 +172,12 @@
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "Station Id",
+                "title": "AQ Measurement Station",
                 "visible" : true,
                 "pos" : 6
             },
             "details": {
-                "title": "Station Id",
+                "title": "AQ Measurement Station",
                 "pos" : 6,
                 "section": "default",
                 "visible": true
@@ -186,7 +186,7 @@
                 "visible": false
             },
             "csv_tsv": {
-                "title": "Station Id",
+                "title": "AQ Measurement Station",
                 "visible": true,
                 "pos": 6
             }
@@ -196,12 +196,12 @@
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "EU Station Code",
+                "title": "AQ Station EoI Code",
                 "visible" : true,
                 "pos" : 7
             },
             "details": {
-                "title": "EU Station Code",
+                "title": "AQ Station EoI Code",
                 "pos" : 7,
                 "section": "default",
                 "visible": true
@@ -210,7 +210,7 @@
                 "visible": false
             },
             "csv_tsv": {
-                "title": "EU Station Code",
+                "title": "AQ Station EoI Code",
                 "visible": true,
                 "pos": 7
             }
@@ -220,12 +220,12 @@
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "Station Name",
+                "title": "AQ Measurement Station Name",
                 "visible" : true,
                 "pos" : 8
             },
             "details": {
-                "title": "Station Name",
+                "title": "AQ Measurement Station Name",
                 "pos" : 8,
                 "section": "default",
                 "visible": true
@@ -234,7 +234,7 @@
                 "visible": false
             },
             "csv_tsv": {
-                "title": "Station Name",
+                "title": "AQ Measurement Station Name",
                 "visible": true,
                 "pos": 8
             }
@@ -244,12 +244,12 @@
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "Sampling Point Id",
+                "title": "Sampling Point",
                 "visible" : true,
                 "pos" : 9
             },
             "details": {
-                "title": "Sampling Point Id",
+                "title": "Sampling Point",
                 "pos" : 9,
                 "section": "default",
                 "visible": true
@@ -258,7 +258,7 @@
                 "visible": false
             },
             "csv_tsv": {
-                "title": "Sampling Point Id",
+                "title": "Sampling Point",
                 "visible": true,
                 "pos": 9
             }
@@ -298,19 +298,19 @@
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "Aggregation Type",
+                "title": "Data Aggregation Process",
                 "visible" : true,
                 "pos" : 11
             },
             "details": {
-                "title": "Aggregation Type",
+                "title": "Data Aggregation Process",
                 "pos" : 11,
                 "section": "default",
                 "visible": true
             },
             "facet": {
                 "visible": true,
-                "title": "Aggregation Type",
+                "title": "Data Aggregation Process",
                 "pos": 3,
                 "type": "facet",
                 "size": 10,
@@ -318,7 +318,7 @@
                 "facet_display_options": ["sort", "checkbox"]
             },
             "csv_tsv": {
-                "title": "Aggregation Type",
+                "title": "Data Aggregation Process",
                 "visible": true,
                 "pos": 11
             }
@@ -328,12 +328,12 @@
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "Reporting Metric",
+                "title": "Data Reporting Metric",
                 "visible" : true,
                 "pos" : 12
             },
             "details": {
-                "title": "Reporting Metric",
+                "title": "Data Reporting Metric",
                 "pos" : 12,
                 "section": "default",
                 "visible": true
@@ -342,7 +342,7 @@
                 "visible": false
             },
             "csv_tsv": {
-                "title": "Reporting Metric",
+                "title": "Data Reporting Metric",
                 "visible": true,
                 "pos": 12
             }
@@ -400,19 +400,19 @@
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "Pollutant",
+                "title": "Air Pollutant",
                 "visible" : true,
                 "pos" : 15
             },
             "details": {
-                "title": "Pollutant",
+                "title": "Air Pollutant",
                 "pos" : 15,
                 "section": "default",
                 "visible": true
             },
             "facet": {
                 "visible": true,
-                "title": "Pollutant",
+                "title": "Air Pollutant",
                 "pos": 2,
                 "type": "facet",
                 "size": 14,
@@ -420,7 +420,7 @@
                 "facet_display_options": ["sort", "checkbox"]
             },
             "csv_tsv": {
-                "title": "Pollutant",
+                "title": "Air Pollutant",
                 "visible": true,
                 "pos": 15
             }
@@ -430,26 +430,26 @@
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "AQ Value",
+                "title": "Air Pollution Level",
                 "visible" : true,
                 "pos" : 16
             },
             "details": {
-                "title": "AQ Value",
+                "title": "Air Pollution Level",
                 "pos" : 16,
                 "section": "default",
                 "visible": true
             },
             "facet": {
                 "visible": true,
-                "title": "AQ Value",
+                "title": "Air Pollution Level",
                 "pos": 4,
                 "type": "range",
                 "order": "term",
                 "facet_display_options": ["sort", "checkbox"]
             },
             "csv_tsv": {
-                "title": "AQ Value",
+                "title": "Air Pollution Level",
                 "visible": true,
                 "pos": 16
             }
@@ -507,26 +507,26 @@
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "Data Coverage",
+                "title": "Data Coverage [%]",
                 "visible" : true,
                 "pos" : 19
             },
             "details": {
-                "title": "Data Coverage",
+                "title": "Data Coverage [%]",
                 "pos" : 19,
                 "section": "default",
                 "visible": true
             },
             "facet": {
                 "visible": true,
-                "title": "Data Coverage",
+                "title": "Data Coverage [%]",
                 "pos": 5,
                 "type": "range",
                 "order": "term",
                 "facet_display_options": ["sort", "checkbox"]
             },
             "csv_tsv": {
-                "title": "Data Capture",
+                "title": "Data Coverage [%]",
                 "visible": true,
                 "pos": 19
             }
@@ -536,12 +536,12 @@
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "Verification Flag",
+                "title": "Data Verification",
                 "visible" : true,
                 "pos" : 20
             },
             "details": {
-                "title": "Verification Flag",
+                "title": "Data Verification",
                 "pos" : 20,
                 "section": "default",
                 "visible": true
@@ -550,7 +550,7 @@
                 "visible": false
             },
             "csv_tsv": {
-                "title": "Verification Flag",
+                "title": "Data Verification",
                 "visible": true,
                 "pos": 20
             }
@@ -560,19 +560,19 @@
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "Station Type",
+                "title": "Type of AQ Station",
                 "visible" : true,
                 "pos" : 21
             },
             "details": {
-                "title": "Station Type",
+                "title": "Type of AQ Station",
                 "pos" : 21,
                 "section": "default",
                 "visible": true
             },
             "facet": {
                 "visible": true,
-                "title": "Station Type",
+                "title": "Type of AQ Station",
                 "pos": 6,
                 "type": "facet",
                 "size": 4,
@@ -580,7 +580,7 @@
                 "facet_display_options": ["sort", "checkbox"]
             },
             "csv_tsv": {
-                "title": "Station Type",
+                "title": "Type of AQ Station",
                 "visible": true,
                 "pos": 21
             }
@@ -590,19 +590,19 @@
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "Station Area",
+                "title": "Area of AQ Station",
                 "visible" : true,
                 "pos" : 22
             },
             "details": {
-                "title": "Station Area",
+                "title": "Area of AQ Station",
                 "pos" : 22,
                 "section": "default",
                 "visible": true
             },
             "facet": {
                 "visible": true,
-                "title": "Station Area",
+                "title": "Area of AQ Station",
                 "pos": 7,
                 "type": "facet",
                 "size": 50,
@@ -610,7 +610,7 @@
                 "facet_display_options": ["sort", "checkbox"]
             },
             "csv_tsv": {
-                "title": "Station Area",
+                "title": "Area of AQ Station",
                 "visible": true,
                 "pos": 22
             }
@@ -620,12 +620,12 @@
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "Station Latitude",
+                "title": "Latitude of AQ Station",
                 "visible" : true,
                 "pos" : 23
             },
             "details": {
-                "title": "Station Latitude",
+                "title": "Latitude of AQ Station",
                 "pos" : 23,
                 "section": "default",
                 "visible": true
@@ -634,7 +634,7 @@
                 "visible": false
             },
             "csv_tsv": {
-                "title": "Station Latitude",
+                "title": "Latitude of AQ Station",
                 "visible": true,
                 "pos": 23
             }
@@ -644,12 +644,12 @@
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "Station Longitude",
+                "title": "Longitude of AQ Station",
                 "visible" : true,
                 "pos" : 24
             },
             "details": {
-                "title": "Station Longitude",
+                "title": "Longitude of AQ Station",
                 "pos" : 24,
                 "section": "default",
                 "visible": true
@@ -658,7 +658,7 @@
                 "visible": false
             },
             "csv_tsv": {
-                "title": "Station Longitude",
+                "title": "Longitude of AQ Station",
                 "visible": true,
                 "pos": 24
             }
@@ -668,19 +668,19 @@
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "Zone",
+                "title": "AQ Zone Code",
                 "visible" : true,
                 "pos" : 25
             },
             "details": {
-                "title": "Zone",
+                "title": "AQ Zone Code",
                 "pos" : 25,
                 "section": "default",
                 "visible": true
             },
             "facet": {
                 "visible": true,
-                "title": "Zone",
+                "title": "AQ Zone Code",
                 "pos": 9,
                 "type": "facet",
                 "size": 10,
@@ -688,7 +688,7 @@
                 "facet_display_options": ["sort", "checkbox"]
             },
             "csv_tsv": {
-                "title": "Zone",
+                "title": "AQ Zone Code",
                 "visible": true,
                 "pos": 25
             }
@@ -698,12 +698,12 @@
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "Zone",
+                "title": "AQ Zone Description",
                 "visible" : true,
                 "pos" : 26
             },
             "details": {
-                "title": "Zone Label",
+                "title": "AQ Zone Description",
                 "pos" : 26,
                 "section": "default",
                 "visible": true
@@ -712,7 +712,7 @@
                 "visible": false
             },
             "csv_tsv": {
-                "title": "Zone Label",
+                "title": "AQ Zone Description",
                 "visible": true,
                 "pos": 26
             }
@@ -722,19 +722,19 @@
             "is_id": false,
             "is_link": false,
             "listing": {
-                "title": "Zone Type",
+                "title": "Type Of AQ Zone",
                 "visible" : true,
                 "pos" : 27
             },
             "details": {
-                "title": "Zone Type",
+                "title": "Type Of AQ Zone",
                 "pos" : 27,
                 "section": "default",
                 "visible": true
             },
             "facet": {
                 "visible": true,
-                "title": "Zone Type",
+                "title": "Type Of AQ Zone",
                 "pos": 10,
                 "type": "facet",
                 "size": 3,
@@ -742,7 +742,7 @@
                 "facet_display_options": ["sort", "checkbox"]
             },
             "csv_tsv": {
-                "title": "Zone Type",
+                "title": "Type Of AQ Zone",
                 "visible": true,
                 "pos": 27
             }
@@ -759,7 +759,7 @@
             },
             "facet": {
                 "visible": true,
-                "title": "Geo Location",
+                "title": "Geo Location of AQ Station",
                 "pos": 11,
                 "type": "geo",
                 "size": 2,
