@@ -13,9 +13,9 @@ block extrastyles
 
 block title
     if (data)
-        title= "Measurement " + data._shorttitle.value
+        title= "Statistics for " + data._shorttitle.value
     else
-        title= "Missing MEasurement"
+        title= "Missing Statistics"
 
 block content
     if (data)
@@ -31,13 +31,13 @@ block content
                 span(class="breadcrumbs-current")= data._shorttitle.value
 
         h1
-            span= "Measurement " + data._shorttitle.value
-
+            span= "Statistics for "
+                +ext_link(data._shorttitle, "http://cr.eionet.europa.eu/factsheet.action?uri=")
         +detail_tables (sections, data, "http://cr.eionet.europa.eu/factsheet.action?uri=")
 
     else
         div(class = "portalMessage errorMessage")
-            span= "AIDE with ID: "
+            span= "Statistics with ID: "
             b= aideid 
             span= " does not exist"
 

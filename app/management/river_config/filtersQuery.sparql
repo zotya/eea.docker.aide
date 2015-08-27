@@ -1,0 +1,90 @@
+PREFIX rod: <http://rod.eionet.europa.eu/schema.rdf#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX cr: <http://cr.eionet.europa.eu/ontologies/contreg.rdf#>
+PREFIX aq: <http://rdfdata.eionet.europa.eu/airquality/ontology/>
+PREFIX aqr: <http://reference.eionet.europa.eu/aq/ontology/>
+PREFIX aqdd: <http://dd.eionet.europa.eu/property/>
+
+SELECT DISTINCT
+
+?Namespace
+
+WHERE {
+
+{
+SELECT DISTINCT *
+
+ WHERE {
+
+  ?SamplingPointURI a aqr:SamplingPoint ;
+            dcterms:source ?source;
+            aqr:inspireNamespace ?Namespace .
+
+ ?envelope rod:hasFile ?source .
+ ?envelope rod:locality ?locURI .
+ ?locURI rdfs:label ?Country .
+
+OPTIONAL{?SamplingPointURI aqr:zone ?ZoneURI} .
+OPTIONAL{?ZoneURI aqr:zoneCode ?Zone} .
+OPTIONAL{?ZoneURI rdfs:label ?ZoneLabel} .
+OPTIONAL{?ZoneURI aqr:zoneType ?zonetypeURI} .
+OPTIONAL{?zonetypeURI rdfs:label ?ZoneType} .
+
+?SamplingPointURI aqr:belongsTo ?NetURI .
+?SamplingPointURI aqr:broader ?staURI .
+?SamplingPointURI aqr:inspireId ?SamplingPointId .
+
+OPTIONAL{?SamplingPointURI aqr:relevantEmissions ?relemiURI} .
+OPTIONAL{?relemiURI aqr:stationClassification ?typeURI} .
+OPTIONAL{?typeURI rdfs:label ?StationType} .
+
+OPTIONAL{?NetURI aqr:inspireId ?NetworkId} .
+OPTIONAL{?NetURI aqr:name ?NetworkName} .
+
+?staURI aqr:inspireId ?StationId .
+?staURI aqr:EUStationCode ?EUStationCode .
+?staURI aqr:name ?StationName .
+?staURI aqr:areaClassification ?areaURI .
+?areaURI rdfs:label ?StationArea .
+
+OPTIONAL{?SamplingPointURI aqr:usedAQD ?AQD} .
+
+?statsURI aqr:samplingPoint ?SamplingPointURI .
+
+?statsURI aqr:pollutant ?PollutantURI .
+?PollutantURI skos:notation ?Pollutant .
+
+?statsURI aqr:airqualityValue ?AQvalue .
+?statsURI aqr:datacoveragePct ?DataCoverage .
+
+?statsURI aqr:observationVerification ?verURI .
+?verURI rdfs:label ?VerificationFlag .
+
+?statsURI aqr:aggregationType ?AggregationTypeURI .
+OPTIONAL{?AggregationTypeURI rdfs:label ?AggregationType} .
+OPTIONAL{?AggregationTypeURI skos:notation ?AggregationType_notation} .
+OPTIONAL{?AggregationTypeURI aqdd:broaderMetric ?ReportingMetricURI} .
+
+?statsURI aqr:beginPosition ?beginPosition .
+?statsURI aqr:station_lat ?StationLat .
+?statsURI aqr:station_lon ?StationLong .
+
+OPTIONAL{?statsURI aqr:unit ?Unit} .
+
+?thresURI aqdd:relatedPollutant ?PollutantURI .
+?thresURI aqdd:aggregationProcess ?AggregationTypeURI .
+?thresURI aqdd:hasReportingMetric ?ReportingMetricURI .
+?thresURI aqdd:hasObjectiveType ?ObjectiveTypeURI .
+?thresURI aqdd:hasProtectionTarget ?ProtectionTargetURI .
+?thresURI aqdd:exceedanceThreshold ?ExceedanceThreshold .
+
+?ReportingMetricURI rdfs:label ?ReportingMetric .
+?ObjectiveTypeURI rdfs:label ?ObjectiveType .
+?ObjectiveTypeURI skos:notation ?ObjectiveType_notation .
+?ProtectionTargetURI rdfs:label ?ProtectionTarget .
+
+}}
+
+}

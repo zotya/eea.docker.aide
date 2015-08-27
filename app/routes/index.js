@@ -34,17 +34,19 @@ exports.details = function(req, res){
   };
 
 
+  var shorttitle = req.query.aideid;
   searchServer.EEAFacetFramework.renderDetails({
     req:req,
     res:res,
     field_base:field_base,
     options:options,
     prerender:function(tmp_options){
-        tmp_options.data['_shorttitle'] = {label:'_shorttitle', value : req.query.aideid.split("/")[req.query.aideid.split("/").length-1]}
+        var shorttitle_link = encodeURIComponent(tmp_options.raw_data.hits.hits[0]._source.statsURI);
+        tmp_options.data['_shorttitle'] = {label:'_shorttitle', value : shorttitle, link : shorttitle_link}
         return(tmp_options);
     },
     error_fallback:function(tmp_options){
-        tmp_options.aideid = req.query.aideid.split("/")[req.query.aideid.split("/").length-1];
+        tmp_options.aideid = req.query.aideid;
         return(tmp_options);
     }
   });
